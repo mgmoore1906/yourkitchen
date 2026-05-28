@@ -16,271 +16,498 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --sage:#3D6B4F;--sage-mid:#6B9E7E;--sage-light:#EAF2ED;
-    --cream:#FAFAF5;--forest:#1E2620;--stone:#6B7066;
-    --border:#DDE8E0;--white:#FFFFFF;
-  }
-  html { scroll-behavior: smooth; }
-  body { font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--forest);-webkit-font-smoothing:antialiased; }
-  nav { background:var(--cream);border-bottom:0.5px solid var(--border);padding:14px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100; }
-  .nav-logo { display:flex;flex-direction:column;line-height:1;cursor:default; }
-  .nav-your { font-family:'DM Sans',sans-serif;font-size:9px;font-weight:500;letter-spacing:5px;color:var(--sage-mid);text-transform:uppercase; }
-  .nav-kitchen { font-family:'Lora',serif;font-size:22px;font-weight:500;color:var(--forest);letter-spacing:-0.5px; }
-  .nav-cta { background:var(--sage);color:var(--white);border:none;border-radius:8px;padding:10px 20px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:background 0.15s;text-decoration:none;display:inline-block; }
-  .nav-cta:hover { background:#2D5240; }
-  .hero { background:var(--forest);padding:72px 40px 64px;text-align:center; }
-  .eyebrow { font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--sage-mid);margin-bottom:22px; }
-  .hero h1 { font-family:'Lora',serif;font-size:clamp(36px,6vw,54px);font-weight:500;color:var(--white);line-height:1.1;letter-spacing:-1.5px;margin-bottom:20px;max-width:580px;margin-left:auto;margin-right:auto; }
-  .hero h1 em { color:var(--sage-mid);font-style:italic; }
-  .hero-sub { font-size:16px;color:#9AB8A5;line-height:1.75;max-width:460px;margin:0 auto 36px; }
-  .brevo-wrapper { max-width:480px;margin:0 auto;background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.12);border-radius:14px;overflow:hidden;padding:8px; }
-  .brevo-wrapper iframe { display:block;width:100%;max-width:100%;border:none;border-radius:8px;margin:0 auto; }
-  .brevo-note { font-size:11px;color:rgba(255,255,255,0.28);margin-top:10px;text-align:center; }
-  .hero-count { display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:0.5px solid rgba(255,255,255,0.1);border-radius:20px;padding:8px 18px;font-size:12px;color:#9AB8A5;margin-top:24px; }
-  .pulse { width:7px;height:7px;border-radius:50%;background:var(--sage-mid);animation:pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.4} }
-  .container { max-width:660px;margin:0 auto;padding:0 32px; }
-  .section { padding:72px 0; }
-  .section+.section { border-top:0.5px solid var(--border); }
-  .section-eyebrow { font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:12px; }
-  .section-h2 { font-family:'Lora',serif;font-size:clamp(26px,4vw,34px);font-weight:500;color:var(--forest);letter-spacing:-0.5px;line-height:1.2;margin-bottom:20px; }
-  .section-h2 em { font-style:italic;color:var(--sage); }
-  .section-body { font-size:15px;color:var(--stone);line-height:1.85; }
-  .story-card { background:var(--white);border:0.5px solid var(--border);border-radius:16px;padding:32px 32px 32px 36px;margin-top:32px;position:relative; }
-  .story-card::before { content:'';position:absolute;left:0;top:28px;bottom:28px;width:3px;background:var(--sage);border-radius:0 2px 2px 0; }
-  .story-quote { font-family:'Lora',serif;font-size:17px;font-style:italic;color:var(--forest);line-height:1.8;margin-bottom:22px; }
-  .story-attr { display:flex;align-items:center;gap:12px; }
-  .story-avatar { width:42px;height:42px;border-radius:50%;background:var(--sage);display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-size:17px;color:var(--white);font-weight:500;flex-shrink:0; }
-  .story-name { font-size:13px;font-weight:500;color:var(--forest); }
-  .story-title { font-size:12px;color:var(--stone);margin-top:1px; }
-  .steps { display:flex;flex-direction:column;margin-top:36px; }
-  .step { display:flex;gap:20px;padding:26px 0;border-bottom:0.5px solid var(--border); }
-  .step:last-child { border-bottom:none; }
-  .step-num { width:38px;height:38px;border-radius:50%;background:var(--sage-light);display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-size:17px;font-weight:500;color:var(--sage);flex-shrink:0;margin-top:2px; }
-  .step h3 { font-family:'Lora',serif;font-size:18px;font-weight:500;color:var(--forest);margin-bottom:6px; }
-  .step p { font-size:14px;color:var(--stone);line-height:1.65; }
-  .step-tag { display:inline-block;font-size:10px;font-weight:500;padding:4px 12px;background:var(--sage-light);color:var(--sage);border-radius:20px;margin-top:10px; }
-  .use-cases { display:flex;flex-direction:column;gap:10px;margin-top:32px; }
-  .use-card { background:var(--white);border:0.5px solid var(--border);border-radius:12px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;transition:border-color 0.15s; }
-  .use-card:hover { border-color:var(--sage-mid); }
-  .use-icon { width:40px;height:40px;border-radius:10px;background:var(--sage-light);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0; }
-  .use-card h4 { font-size:14px;font-weight:500;color:var(--forest);margin-bottom:4px; }
-  .use-card p { font-size:13px;color:var(--stone);line-height:1.55; }
-  .refer-section { background:var(--sage-light);border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);padding:72px 40px;text-align:center; }
-  .refer-section h2 { font-family:'Lora',serif;font-size:clamp(24px,4vw,32px);font-weight:500;color:var(--forest);letter-spacing:-0.5px;margin-bottom:12px; }
-  .refer-section p { font-size:15px;color:var(--stone);max-width:440px;margin:0 auto 32px;line-height:1.7; }
-  .refer-card { background:var(--white);border:0.5px solid var(--border);border-radius:14px;padding:28px;max-width:440px;margin:0 auto; }
-  .refer-label { font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone);margin-bottom:10px;text-align:left; }
-  .refer-link-box { background:var(--cream);border:0.5px solid var(--border);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--sage);font-family:monospace;margin-bottom:12px;text-align:left; }
-  .refer-btn { width:100%;padding:13px;background:var(--forest);color:var(--white);border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:background 0.15s; }
-  .refer-btn:hover { background:#2D5240; }
-  .refer-stats { display:flex;justify-content:center;gap:32px;margin-top:22px;padding-top:20px;border-top:0.5px solid var(--border); }
-  .stat-num { font-family:'Lora',serif;font-size:24px;font-weight:500;color:var(--sage);display:block; }
-  .stat-lbl { font-size:11px;color:var(--stone);margin-top:2px;display:block; }
-  footer { background:var(--forest);padding:52px 40px;text-align:center; }
-  .footer-your { font-family:'DM Sans',sans-serif;font-size:9px;font-weight:500;letter-spacing:5px;color:var(--sage-mid);text-transform:uppercase;margin-bottom:2px; }
-  .footer-kitchen { font-family:'Lora',serif;font-size:28px;font-weight:500;color:var(--white);letter-spacing:-0.5px; }
-  .footer-tagline { font-family:'Lora',serif;font-size:14px;font-style:italic;color:var(--sage-mid);margin:10px 0 24px; }
-  .footer-links { display:flex;justify-content:center;flex-wrap:wrap;gap:6px 16px;font-size:12px;margin-bottom:20px; }
-  .footer-links a { color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.15s; }
-  .footer-links a:hover { color:var(--sage-mid); }
-  .footer-copy { font-size:11px;color:rgba(255,255,255,0.18); }
-  @media(max-width:600px) {
-    nav { padding:14px 20px; }
-    .hero { padding:60px 24px 52px; }
-    .container { padding:0 20px; }
-    .section { padding:52px 0; }
-    .refer-section { padding:52px 20px; }
-    footer { padding:48px 20px; }
-    .story-card { padding:24px 20px 24px 26px; }
-  }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+--sage:#3D6B4F;--sage-mid:#6B9E7E;--sage-light:#EAF2ED;
+--cream:#FAFAF5;--forest:#1E2620;--stone:#6B7066;
+--border:#DDE8E0;--white:#FFFFFF;
+}
+html { scroll-behavior: smooth; }
+body { font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--forest);-webkit-font-smoothing:antialiased; }
+nav { background:var(--cream);border-bottom:0.5px solid var(--border);padding:14px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100; }
+.nav-logo { display:flex;flex-direction:column;line-height:1;cursor:default; }
+.nav-your { font-family:'DM Sans',sans-serif;font-size:9px;font-weight:500;letter-spacing:5px;color:var(--sage-mid);text-transform:uppercase; }
+.nav-kitchen { font-family:'Lora',serif;font-size:22px;font-weight:500;color:var(--forest);letter-spacing:-0.5px; }
+.nav-links { display:flex;align-items:center;gap:24px; }
+.nav-link { font-size:13px;font-weight:500;color:var(--stone);text-decoration:none;transition:color 0.15s; }
+.nav-link:hover { color:var(--sage); }
+.nav-cta { background:var(--sage);color:var(--white);border:none;border-radius:8px;padding:10px 20px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:background 0.15s;text-decoration:none;display:inline-block; }
+.nav-cta:hover { background:#2D5240; }
+.hero { background:var(--forest);padding:72px 40px 64px;text-align:center; }
+.eyebrow { font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--sage-mid);margin-bottom:22px; }
+.hero h1 { font-family:'Lora',serif;font-size:clamp(36px,6vw,54px);font-weight:500;color:var(--white);line-height:1.1;letter-spacing:-1.5px;margin-bottom:20px;max-width:580px;margin-left:auto;margin-right:auto; }
+.hero h1 em { color:var(--sage-mid);font-style:italic; }
+.hero-sub { font-size:16px;color:#9AB8A5;line-height:1.75;max-width:460px;margin:0 auto 36px; }
+.brevo-wrapper { max-width:480px;margin:0 auto;background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.12);border-radius:14px;overflow:hidden;padding:8px; }
+.brevo-wrapper iframe { display:block;width:100%;max-width:100%;border:none;border-radius:8px;margin:0 auto; }
+.brevo-note { font-size:11px;color:rgba(255,255,255,0.28);margin-top:10px;text-align:center; }
+.hero-count { display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:0.5px solid rgba(255,255,255,0.1);border-radius:20px;padding:8px 18px;font-size:12px;color:#9AB8A5;margin-top:24px; }
+.pulse { width:7px;height:7px;border-radius:50%;background:var(--sage-mid);animation:pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.4} }
+.container { max-width:660px;margin:0 auto;padding:0 32px; }
+.section { padding:72px 0; }
+.section+.section { border-top:0.5px solid var(--border); }
+.section-eyebrow { font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:12px; }
+.section-h2 { font-family:'Lora',serif;font-size:clamp(26px,4vw,34px);font-weight:500;color:var(--forest);letter-spacing:-0.5px;line-height:1.2;margin-bottom:20px; }
+.section-h2 em { font-style:italic;color:var(--sage); }
+.section-body { font-size:15px;color:var(--stone);line-height:1.85; }
+.story-card { background:var(--white);border:0.5px solid var(--border);border-radius:16px;padding:32px 32px 32px 36px;margin-top:32px;position:relative; }
+.story-card::before { content:'';position:absolute;left:0;top:28px;bottom:28px;width:3px;background:var(--sage);border-radius:0 2px 2px 0; }
+.story-quote { font-family:'Lora',serif;font-size:17px;font-style:italic;color:var(--forest);line-height:1.8;margin-bottom:22px; }
+.story-attr { display:flex;align-items:center;gap:12px; }
+.story-avatar { width:42px;height:42px;border-radius:50%;background:var(--sage);display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-size:17px;color:var(--white);font-weight:500;flex-shrink:0; }
+.story-name { font-size:13px;font-weight:500;color:var(--forest); }
+.story-title { font-size:12px;color:var(--stone);margin-top:1px; }
+.steps { display:flex;flex-direction:column;margin-top:36px; }
+.step { display:flex;gap:20px;padding:26px 0;border-bottom:0.5px solid var(--border); }
+.step:last-child { border-bottom:none; }
+.step-num { width:38px;height:38px;border-radius:50%;background:var(--sage-light);display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-size:17px;font-weight:500;color:var(--sage);flex-shrink:0;margin-top:2px; }
+.step h3 { font-family:'Lora',serif;font-size:18px;font-weight:500;color:var(--forest);margin-bottom:6px; }
+.step p { font-size:14px;color:var(--stone);line-height:1.65; }
+.step-tag { display:inline-block;font-size:10px;font-weight:500;padding:4px 12px;background:var(--sage-light);color:var(--sage);border-radius:20px;margin-top:10px; }
+.use-cases { display:flex;flex-direction:column;gap:10px;margin-top:32px; }
+.use-card { background:var(--white);border:0.5px solid var(--border);border-radius:12px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;transition:border-color 0.15s; }
+.use-card:hover { border-color:var(--sage-mid); }
+.use-icon { width:40px;height:40px;border-radius:10px;background:var(--sage-light);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0; }
+.use-card h4 { font-size:14px;font-weight:500;color:var(--forest);margin-bottom:4px; }
+.use-card p { font-size:13px;color:var(--stone);line-height:1.55; }
+.refer-section { background:var(--sage-light);border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);padding:72px 40px;text-align:center; }
+.refer-section h2 { font-family:'Lora',serif;font-size:clamp(24px,4vw,32px);font-weight:500;color:var(--forest);letter-spacing:-0.5px;margin-bottom:12px; }
+.refer-section p { font-size:15px;color:var(--stone);max-width:440px;margin:0 auto 32px;line-height:1.7; }
+.refer-card { background:var(--white);border:0.5px solid var(--border);border-radius:14px;padding:28px;max-width:440px;margin:0 auto; }
+.refer-label { font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone);margin-bottom:10px;text-align:left; }
+.refer-link-box { background:var(--cream);border:0.5px solid var(--border);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--sage);font-family:monospace;margin-bottom:12px;text-align:left; }
+.refer-btn { width:100%;padding:13px;background:var(--forest);color:var(--white);border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:background 0.15s; }
+.refer-btn:hover { background:#2D5240; }
+.refer-stats { display:flex;justify-content:center;gap:32px;margin-top:22px;padding-top:20px;border-top:0.5px solid var(--border); }
+.stat-num { font-family:'Lora',serif;font-size:24px;font-weight:500;color:var(--sage);display:block; }
+.stat-lbl { font-size:11px;color:var(--stone);margin-top:2px;display:block; }
+
+/* ── FAQ ── */
+.faq-section { padding:72px 40px;background:var(--cream);border-top:0.5px solid var(--border); }
+.faq-inner { max-width:660px;margin:0 auto; }
+.faq-group { margin-bottom:48px; }
+.faq-group:last-child { margin-bottom:0; }
+.faq-group-label { font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:16px; }
+.faq-item { border-bottom:0.5px solid var(--border); }
+.faq-item:first-of-type { border-top:0.5px solid var(--border); }
+.faq-q { width:100%;background:none;border:none;padding:20px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;text-align:left;font-family:'DM Sans',sans-serif; }
+.faq-q-text { font-family:'Lora',serif;font-size:16px;font-weight:500;color:var(--forest);line-height:1.4; }
+.faq-icon { width:24px;height:24px;border-radius:50%;background:var(--sage-light);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--sage);flex-shrink:0;transition:transform 0.2s,background 0.2s; }
+.faq-item.open .faq-icon { transform:rotate(45deg);background:var(--sage);color:var(--white); }
+.faq-a { display:none;padding:0 0 20px;font-size:14px;color:var(--stone);line-height:1.8; }
+.faq-a a { color:var(--sage);text-decoration:none; }
+.faq-a a:hover { text-decoration:underline; }
+.faq-item.open .faq-a { display:block; }
+.faq-still { background:var(--forest);border-radius:16px;padding:28px 32px;margin-top:48px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap; }
+.faq-still-left h3 { font-family:'Lora',serif;font-size:20px;font-weight:500;color:var(--white);margin-bottom:6px; }
+.faq-still-left p { font-size:14px;color:rgba(255,255,255,0.55);font-weight:300; }
+.faq-still a { display:inline-block;background:var(--sage);color:var(--white);border-radius:8px;padding:11px 22px;font-size:13px;font-weight:500;text-decoration:none;white-space:nowrap;transition:background 0.15s; }
+.faq-still a:hover { background:#2D5240; }
+
+footer { background:var(--forest);padding:52px 40px;text-align:center; }
+.footer-your { font-family:'DM Sans',sans-serif;font-size:9px;font-weight:500;letter-spacing:5px;color:var(--sage-mid);text-transform:uppercase;margin-bottom:2px; }
+.footer-kitchen { font-family:'Lora',serif;font-size:28px;font-weight:500;color:var(--white);letter-spacing:-0.5px; }
+.footer-tagline { font-family:'Lora',serif;font-size:14px;font-style:italic;color:var(--sage-mid);margin:10px 0 24px; }
+.footer-links { display:flex;justify-content:center;flex-wrap:wrap;gap:6px 16px;font-size:12px;margin-bottom:20px; }
+.footer-links a { color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.15s; }
+.footer-links a:hover { color:var(--sage-mid); }
+.footer-copy { font-size:11px;color:rgba(255,255,255,0.18); }
+@media(max-width:600px) {
+nav { padding:14px 20px; }
+.nav-link { display:none; }
+.hero { padding:60px 24px 52px; }
+.container { padding:0 20px; }
+.section { padding:52px 0; }
+.refer-section { padding:52px 20px; }
+.faq-section { padding:52px 20px; }
+footer { padding:48px 20px; }
+.story-card { padding:24px 20px 24px 26px; }
+.faq-still { padding:24px 20px; }
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-logo">
-    <span class="nav-your">Your</span>
-    <span class="nav-kitchen">Kitchen</span>
-  </div>
-  <a class="nav-cta" href="#waitlist">Join the waitlist</a>
+<div class="nav-logo">
+<span class="nav-your">Your</span>
+<span class="nav-kitchen">Kitchen</span>
+</div>
+<div class="nav-links">
+<a class="nav-link" href="#how-it-works">How it works</a>
+<a class="nav-link" href="#faq">FAQ</a>
+<a class="nav-cta" href="#waitlist">Join the waitlist</a>
+</div>
 </nav>
 
 <section class="hero" id="waitlist">
-  <div class="eyebrow">Coming August 2026</div>
-  <h1>Your village is ready.<br><em>Let them show up.</em></h1>
-  <p class="hero-sub">YourKitchen coordinates meals from the people who love you — so dinner is one less thing to carry when life gets heavy.</p>
+<div class="eyebrow">Coming August 2026</div>
+<h1>Your village is ready.<br><em>Let them show up.</em></h1>
+<p class="hero-sub">YourKitchen coordinates meals from the people who love you — so dinner is one less thing to carry when life gets heavy.</p>
 
-  <div class="brevo-wrapper">
-    <iframe
-      width="100%"
-      height="420"
-      src="https://594524f6.sibforms.com/serve/MUIFACSPo6AVM8qMjOdfV49N_JMjI3X5-SYkxOp1TSEP2PZQ4dAlnvzL5azY0NFYfJE2-dSe6C4S38qON4rn8zyxGgCnUi2UJ8R-s2lj3AN7uGb_8CjbgMNXTHpiVspXL9V5Grsove-eX8YQRe-UxZ9C3gJt4y1tXoTmkqYBkxA0LEovvaYVl2tKXATbH8zkaPd5chivorcbbkMHWQ=="
-      frameborder="0"
-      scrolling="auto"
-      allowfullscreen>
-    </iframe>
-  </div>
-  <p class="brevo-note">No spam. Ever. Just a heads-up when we launch.</p>
+<div class="brevo-wrapper">
+<iframe
+width="100%"
+height="420"
+src="https://594524f6.sibforms.com/serve/MUIFACSPo6AVM8qMjOdfV49N_JMjI3X5-SYkxOp1TSEP2PZQ4dAlnvzL5azY0NFYfJE2-dSe6C4S38qON4rn8zyxGgCnUi2UJ8R-s2lj3AN7uGb_8CjbgMNXTHpiVspXL9V5Grsove-eX8YQRe-UxZ9C3gJt4y1tXoTmkqYBkxA0LEovvaYVl2tKXATbH8zkaPd5chivorcbbkMHWQ=="
+frameborder="0"
+scrolling="auto"
+allowfullscreen>
+</iframe>
+</div>
+<p class="brevo-note">No spam. Ever. Just a heads-up when we launch.</p>
 
-  <div class="hero-count">
-    <div class="pulse"></div>
-    <span>Be one of the first families to join</span>
-  </div>
+<div class="hero-count">
+<div class="pulse"></div>
+<span>Be one of the first families to join</span>
+</div>
 </section>
 
 <div style="background:var(--cream)">
-  <div class="container">
+<div class="container">
 
-    <div class="section">
-      <p class="section-eyebrow">Why we built this</p>
-      <h2 class="section-h2">Three kids under five.<br><em>Your village matters more than ever.</em></h2>
-      <div class="story-card">
-        <p class="story-quote">"Our third baby is literally three weeks away. Three kids under five in Hockley, Texas — life is full, beautiful, and completely overwhelming. The people who love our family want to show up. But nobody had a way to actually do it in a coordinated, meaningful way. So I built one."</p>
-        <div class="story-attr">
-          <div class="story-avatar">M</div>
-          <div>
-            <div class="story-name">Marques Moore</div>
-            <div class="story-title">Founder · YourKitchen</div>
-          </div>
-        </div>
-      </div>
-      <p class="section-body" style="margin-top:28px">YourKitchen started as a gift for Danielle — a way for her village to claim dates on a calendar and send dinner without her having to ask. No coordination overhead. No group texts. No three lasagnas on the same Tuesday. Just dinner, handled, by the people who love her.</p>
-      <p class="section-body" style="margin-top:16px">Then we realized: every family going through something hard needs exactly this.</p>
-    </div>
+<div class="section">
+<p class="section-eyebrow">Why we built this</p>
+<h2 class="section-h2">Three kids under five.<br><em>Your village matters more than ever.</em></h2>
+<div class="story-card">
+<p class="story-quote">"Our third baby is literally three weeks away. Three kids under five in Hockley, Texas — life is full, beautiful, and completely overwhelming. The people who love our family want to show up. But nobody had a way to actually do it in a coordinated, meaningful way. So I built one."</p>
+<div class="story-attr">
+<div class="story-avatar">M</div>
+<div>
+<div class="story-name">Marques Moore</div>
+<div class="story-title">Founder · YourKitchen</div>
+</div>
+</div>
+</div>
+<p class="section-body" style="margin-top:28px">YourKitchen started as a gift for Danielle — a way for her village to claim dates on a calendar and send dinner without her having to ask. No coordination overhead. No group texts. No three lasagnas on the same Tuesday. Just dinner, handled, by the people who love her.</p>
+<p class="section-body" style="margin-top:16px">Then we realized: every family going through something hard needs exactly this.</p>
+</div>
 
-    <div class="section">
-      <p class="section-eyebrow">How it works</p>
-      <h2 class="section-h2">Three steps.<br><em>One less thing to worry about.</em></h2>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div>
-            <h3>Someone creates a Kitchen</h3>
-            <p>A friend, family member, or the recipient sets up a YourKitchen calendar — choosing how many months of support they need, their meal preferences, allergies, and preferred delivery window.</p>
-            <span class="step-tag">5 minutes to set up</span>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div>
-            <h3>The village claims dates</h3>
-            <p>Friends and family get a link to the calendar. They pick a date, choose a meal from a curated local restaurant list, leave a personal note — and save their card. No awkward payment requests. No forgotten commitments.</p>
-            <span class="step-tag">One tap to claim a date</span>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div>
-            <h3>The recipient confirms and eats</h3>
-            <p>On the day, the recipient gets a text: "Marcus picked dinner for tonight — does this work?" They reply Y to confirm or swap to something else. The order is placed automatically. Dinner arrives.</p>
-            <span class="step-tag">Y to confirm · N to swap</span>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="section" id="how-it-works">
+<p class="section-eyebrow">How it works</p>
+<h2 class="section-h2">Three steps.<br><em>One less thing to worry about.</em></h2>
+<div class="steps">
+<div class="step">
+<div class="step-num">1</div>
+<div>
+<h3>Someone creates a Kitchen</h3>
+<p>A friend, family member, or the recipient sets up a YourKitchen calendar — choosing how many months of support they need, their meal preferences, allergies, and preferred delivery window.</p>
+<span class="step-tag">5 minutes to set up</span>
+</div>
+</div>
+<div class="step">
+<div class="step-num">2</div>
+<div>
+<h3>The village claims dates</h3>
+<p>Friends and family get a link to the calendar. They pick a date, choose a meal from a curated local restaurant list, leave a personal note — and save their card. No awkward payment requests. No forgotten commitments.</p>
+<span class="step-tag">One tap to claim a date</span>
+</div>
+</div>
+<div class="step">
+<div class="step-num">3</div>
+<div>
+<h3>The recipient confirms and eats</h3>
+<p>On the day, the recipient gets a text: "Marcus picked dinner for tonight — does this work?" They reply Y to confirm or swap to something else. The order is placed automatically. Dinner arrives.</p>
+<span class="step-tag">Y to confirm · N to swap</span>
+</div>
+</div>
+</div>
+</div>
 
-    <div class="section">
-      <p class="section-eyebrow">Who it's for</p>
-      <h2 class="section-h2">Life gets hard.<br><em>Your kitchen shouldn't.</em></h2>
-      <div class="use-cases">
-        <div class="use-card">
-          <div class="use-icon">🤱</div>
-          <div>
-            <h4>New parents</h4>
-            <p>The meal train, finally organized. No more group texts, missed commitments, or duplicate dinners on the same night.</p>
-          </div>
-        </div>
-        <div class="use-card">
-          <div class="use-icon">🎗️</div>
-          <div>
-            <h4>Families in treatment</h4>
-            <p>When someone is navigating chemo, radiation, or surgery — their community wants to show up. YourKitchen gives them a real way to do it.</p>
-          </div>
-        </div>
-        <div class="use-card">
-          <div class="use-icon">✈️</div>
-          <div>
-            <h4>Deployed & long-distance families</h4>
-            <p>A spouse holding down the home solo deserves a village that shows up — even when family is hours away.</p>
-          </div>
-        </div>
-        <div class="use-card">
-          <div class="use-icon">🕊️</div>
-          <div>
-            <h4>Grief & loss</h4>
-            <p>After losing someone, nobody wants to think about dinner. The people who love them do. YourKitchen connects both.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="section">
+<p class="section-eyebrow">Who it's for</p>
+<h2 class="section-h2">Life gets hard.<br><em>Your kitchen shouldn't.</em></h2>
+<div class="use-cases">
+<div class="use-card">
+<div class="use-icon">🤱</div>
+<div>
+<h4>New parents</h4>
+<p>The meal train, finally organized. No more group texts, missed commitments, or duplicate dinners on the same night.</p>
+</div>
+</div>
+<div class="use-card">
+<div class="use-icon">🎗️</div>
+<div>
+<h4>Families in treatment</h4>
+<p>When someone is navigating chemo, radiation, or surgery — their community wants to show up. YourKitchen gives them a real way to do it.</p>
+</div>
+</div>
+<div class="use-card">
+<div class="use-icon">✈️</div>
+<div>
+<h4>Deployed & long-distance families</h4>
+<p>A spouse holding down the home solo deserves a village that shows up — even when family is hours away.</p>
+</div>
+</div>
+<div class="use-card">
+<div class="use-icon">🕊️</div>
+<div>
+<h4>Grief & loss</h4>
+<p>After losing someone, nobody wants to think about dinner. The people who love them do. YourKitchen connects both.</p>
+</div>
+</div>
+</div>
+</div>
 
-  </div>
+</div>
 </div>
 
 <section class="refer-section">
-  <h2>Know someone who needs this?</h2>
-  <p>Share YourKitchen with someone whose village is ready to show up. Every share gets us closer to the families who need this most.</p>
-  <div class="refer-card">
-    <p class="refer-label">Share the link</p>
-    <div class="refer-link-box">yourkitchen.app</div>
-    <button class="refer-btn" onclick="shareLink()">Copy link to share</button>
-    <div class="refer-stats">
-      <div><span class="stat-num">Aug</span><span class="stat-lbl">Launch month</span></div>
-      <div><span class="stat-num">Free</span><span class="stat-lbl">Always to join</span></div>
-      <div><span class="stat-num">🧡</span><span class="stat-lbl">Built for families</span></div>
-    </div>
-  </div>
+<h2>Know someone who needs this?</h2>
+<p>Share YourKitchen with someone whose village is ready to show up. Every share gets us closer to the families who need this most.</p>
+<div class="refer-card">
+<p class="refer-label">Share the link</p>
+<div class="refer-link-box">yourkitchen.app</div>
+<button class="refer-btn" onclick="shareLink()">Copy link to share</button>
+<div class="refer-stats">
+<div><span class="stat-num">Aug</span><span class="stat-lbl">Launch month</span></div>
+<div><span class="stat-num">Free</span><span class="stat-lbl">Always to join</span></div>
+<div><span class="stat-num">🧡</span><span class="stat-lbl">Built for families</span></div>
+</div>
+</div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq-section" id="faq">
+<div class="faq-inner">
+<p class="section-eyebrow">Got questions</p>
+<h2 class="section-h2" style="margin-bottom:40px">Everything you need<br><em>to know.</em></h2>
+
+<!-- Group 1: The basics -->
+<div class="faq-group">
+<p class="faq-group-label">The basics</p>
+
+<div class="faq-item">
+<button class="faq-q" onclick="toggle(this)">
+<span class="faq-q-text">What is YourKitchen?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">YourKitchen is a meal coordination platform that lets the people who love you send dinner from restaurants you actually want — without any awkward asking, group texts, or duplicate deliveries. You set up a Kitchen with your preferred restaurants and open calendar dates. Your village gets a link, claims a date, picks a meal, and dinner shows up. You just reply Y to confirm.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-q" onclick="toggle(this)">
+<span class="faq-q-text">Who is YourKitchen for?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">Anyone whose village wants to show up but doesn't have a coordinated way to do it. That includes new parents navigating life with a newborn, families where a loved one is in treatment, spouses holding down the home while a partner is deployed, and families processing grief. If life just got heavier and dinner feels like one more thing — YourKitchen is for you.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-q" onclick="toggle(this)">
+<span class="faq-q-text">How is this different from a regular meal train?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">Traditional meal trains rely on someone manually coordinating who's bringing what, managing dietary restrictions over group texts, and hoping people follow through. YourKitchen automates all of that — restaurants are pre-approved, delivery is handled by trusted delivery partners, and you confirm each meal with a single text reply. No home cooking logistics, no drop-off coordination, no three lasagnas on the same Tuesday.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-q" onclick="toggle(this)">
+<span class="faq-q-text">Does the recipient need an account to receive meals?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">Yes — the recipient (or someone setting up a Kitchen on their behalf) creates a free account to configure their Kitchen: delivery address, restaurant preferences, dietary restrictions, and open calendar dates. Once the Kitchen is live, they just respond to SMS confirmations. No app downloads required.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-q" onclick="toggle(this)">
+<span class="faq-q-text">Does the coordinator (person sending the meal) need an account?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">No. Coordinators don't need to create an account. They open the Kitchen link, pick a date and meal, enter their name and payment info, and submit. That's it. After their first meal is delivered, they'll receive a gentle nudge to create a free account — but it's never required to send a meal.</div>
+</div>
+
+</div>
+
+<!-- Group 2: Delivery & restaurants -->
+<div class="faq-group">
+<p class="faq-group-label">Delivery &amp; restaurants</p>
+
+<div class="faq-item">
+<button class="faq-q" onclick="toggle(this)">
+<span class="faq-q-text">How does delivery work?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">All deliveries are handled by trusted delivery partners. When a recipient confirms a meal with a Y reply, the order is placed automatically and a driver is assigned. Both the recipient and coordinator receive an SMS with a live tracking link. No separate app needed — everything happens through YourKitchen.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-q" onclick="toggle(this)">
+<span class="faq-q-text">What restaurants are available?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">At launch, YourKitchen offers a curated list of restaurants in each supported city — a mix of popular local favorites and well-known chains, all available for delivery. The recipient selects their preferred restaurants during Kitchen setup, so coordinators always order from a pre-approved list. We're launching in Houston, Indianapolis, Atlanta, Dallas, Chicago, Washington D.C., Los Angeles, and New York. More cities coming soon.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-q" onclick="toggle(this)">
+<span class="faq-q-text">What if my favorite restaurant isn't listed?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">You can request any restaurant directly from the My Restaurants page inside your Kitchen. Fill out a quick form — restaurant name, city, and any notes — and we'll add it within 24 hours. We personally curate every restaurant to make sure it's available for delivery to your address.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-q" onclick="toggle(this)">
+<span class="faq-q-text">When does the recipient get notified about a meal?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">The morning of the delivery date — not when the coordinator books it. If a coordinator books a meal two weeks out, the recipient won't hear about it until the day arrives. Notification timing is meal-type aware: breakfast slots notify at 6:30 AM, lunch at 9:00 AM, and dinner at 2:00 PM. This gives recipients enough time to confirm before delivery.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-q" onclick="toggle(this)">
+<span class="faq-q-text">What if the recipient can't make it work that day?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">They reply N to decline. The coordinator is notified — no charge is applied — and the date reopens for anyone else in the village to claim. The recipient can optionally send a short note to the coordinator explaining why, so they can try a different date.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-q" onclick="toggle(this)">
+<span class="faq-q-text">Is YourKitchen available in my city?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">At launch we're serving Houston, Indianapolis, Atlanta, Dallas, Chicago, Washington D.C., Los Angeles, and New York. If you're outside these cities, join the waitlist and we'll let you know when we expand to your area. Coordinators can be anywhere in the country — geo only applies to where the meals are delivered.</div>
+</div>
+
+</div>
+
+<!-- Group 3: Payments -->
+<div class="faq-group">
+<p class="faq-group-label">Payments &amp; pricing</p>
+
+<div class="faq-item">
+<button class="faq-q" onclick="toggle(this)">
+<span class="faq-q-text">When is the coordinator charged?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">Only after the recipient confirms. Coordinators enter their payment info when submitting a proposal, but nothing is charged until the recipient replies Y. If the recipient declines or the proposal expires, no charge is applied — ever.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-q" onclick="toggle(this)">
+<span class="faq-q-text">Is there a fee on top of the meal cost?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">YourKitchen charges a 3% platform fee on each confirmed order, regardless of which plan the recipient is on. This covers the coordination infrastructure, SMS notifications, and delivery integration. Standard delivery fees and taxes also apply, just as they would on any delivery order.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-q" onclick="toggle(this)">
+<span class="faq-q-text">How much does it cost for the recipient to use YourKitchen?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">YourKitchen is free to set up and use. The Free plan gives you a 60-day calendar, up to 3 restaurants, and in-app notifications — no card required. Every account also includes a 14-day full Care+ trial so you can experience everything before deciding. Care+ is $9.99/month and adds SMS confirmations, a 12-month calendar, and up to 10 restaurants. An Early Adopter annual plan is available at $59/year (about 50% off monthly), and a Founding Member lifetime plan is available for $149 — limited to the first 100 members.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-q" onclick="toggle(this)">
+<span class="faq-q-text">What's included in the Founding Member plan?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">Founding Member is a one-time $149 payment for lifetime access — price never increases, even as we raise rates. It includes everything in Care+, unlimited active Kitchens, direct access to the founder, voting rights on new features before they ship, early beta access, and your name listed in YourKitchen's founding story on the about page. Limited to the first 100 members.</div>
+</div>
+
+</div>
+
+<!-- Group 4: Privacy & safety -->
+<div class="faq-group">
+<p class="faq-group-label">Privacy &amp; safety</p>
+
+<div class="faq-item">
+<button class="faq-q" onclick="toggle(this)">
+<span class="faq-q-text">Can anyone access my Kitchen link?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">Your Kitchen link is not publicly indexed — it's only discoverable by people you share it with. That said, anyone with the link can view your Kitchen and submit a meal proposal. We recommend sharing it only with people you trust. In a future update, you'll be able to require an invite code for additional privacy.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-q" onclick="toggle(this)">
+<span class="faq-q-text">Is my delivery address visible to coordinators?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">No. Coordinators never see your home address. When a coordinator submits a proposal, the order is placed by YourKitchen directly with the delivery partner using your address on file. The coordinator only sees that the order was placed and receives a confirmation once it's delivered.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-q" onclick="toggle(this)">
+<span class="faq-q-text">How is payment information handled?</span>
+<span class="faq-icon">+</span>
+</button>
+<div class="faq-a">All payments are processed by Stripe, one of the world's most trusted payment platforms. YourKitchen never stores card numbers. Stripe handles everything — card capture, authorization, and charging — only when a recipient confirms a meal.</div>
+</div>
+
+</div>
+
+<!-- Group 5: Still have questions -->
+<div class="faq-still">
+<div class="faq-still-left">
+<h3>Still have questions?</h3>
+<p>We read every email and reply personally.</p>
+</div>
+<a href="mailto:marques@yourkitchen.app">Email us →</a>
+</div>
+
+</div>
 </section>
 
 <footer>
-  <div class="footer-your">Your</div>
-  <div class="footer-kitchen">Kitchen</div>
-  <p class="footer-tagline">"Your kitchen, covered."</p>
-  <div class="footer-links">
-    <a href="https://yourkitchen.app">yourkitchen.app</a>
-    <span style="color:rgba(255,255,255,0.2)">·</span>
-    <a href="mailto:marques@yourkitchen.app">marques@yourkitchen.app</a>
-    <span style="color:rgba(255,255,255,0.2)">·</span>
-    <a href="https://yourkitchen.app/terms">Terms</a>
-    <span style="color:rgba(255,255,255,0.2)">·</span>
-    <a href="https://yourkitchen.app/privacy">Privacy</a>
-    <span style="color:rgba(255,255,255,0.2)">·</span>
-    <a href="https://yourkitchen.app/sms-opt-in.html">SMS Opt In</a>
-    <span style="color:rgba(255,255,255,0.2)">·</span>
-    <span style="color:rgba(255,255,255,0.2)">Houston, TX</span>
-  </div>
-  <p class="footer-copy">© 2026 YourKitchen LLC · Built with love for our family · All rights reserved</p>
+<div class="footer-your">Your</div>
+<div class="footer-kitchen">Kitchen</div>
+<p class="footer-tagline">"Your kitchen, covered."</p>
+<div class="footer-links">
+<a href="https://yourkitchen.app">yourkitchen.app</a>
+<span style="color:rgba(255,255,255,0.2)">·</span>
+<a href="mailto:marques@yourkitchen.app">marques@yourkitchen.app</a>
+<span style="color:rgba(255,255,255,0.2)">·</span>
+<a href="#faq">FAQ</a>
+<span style="color:rgba(255,255,255,0.2)">·</span>
+<a href="https://yourkitchen.app/terms">Terms</a>
+<span style="color:rgba(255,255,255,0.2)">·</span>
+<a href="https://yourkitchen.app/privacy">Privacy</a>
+<span style="color:rgba(255,255,255,0.2)">·</span>
+<a href="https://yourkitchen.app/sms-opt-in.html">SMS Opt In</a>
+<span style="color:rgba(255,255,255,0.2)">·</span>
+<span style="color:rgba(255,255,255,0.2)">Houston, TX</span>
+</div>
+<p class="footer-copy">© 2026 YourKitchen LLC · Built with love for our family · All rights reserved</p>
 </footer>
 
 <script>
-  function shareLink() {
-    var url = 'https://yourkitchen.app';
-    var btn = document.querySelector('.refer-btn');
-    if (navigator.share) {
-      navigator.share({ title: 'YourKitchen', text: 'Your kitchen, covered.', url: url });
-    } else if (navigator.clipboard) {
-      navigator.clipboard.writeText(url).then(function() { showCopied(btn); });
-    } else {
-      var ta = document.createElement('textarea');
-      ta.value = url; ta.style.position='fixed'; ta.style.opacity='0';
-      document.body.appendChild(ta); ta.select();
-      document.execCommand('copy'); document.body.removeChild(ta);
-      showCopied(btn);
-    }
-  }
-  function showCopied(btn) {
-    var orig = btn.textContent;
-    btn.textContent = '✓ Link copied!';
-    btn.style.background = '#3D6B4F';
-    setTimeout(function() { btn.textContent = orig; btn.style.background = ''; }, 2500);
-  }
-  document.querySelector('.nav-cta').addEventListener('click', function(e) {
-    e.preventDefault();
-    document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });
-  });
+function toggle(btn) {
+var item = btn.parentElement;
+item.classList.toggle('open');
+}
+function shareLink() {
+var url = 'https://yourkitchen.app';
+var btn = document.querySelector('.refer-btn');
+if (navigator.share) {
+navigator.share({ title: 'YourKitchen', text: 'Your kitchen, covered.', url: url });
+} else if (navigator.clipboard) {
+navigator.clipboard.writeText(url).then(function() { showCopied(btn); });
+} else {
+var ta = document.createElement('textarea');
+ta.value = url; ta.style.position='fixed'; ta.style.opacity='0';
+document.body.appendChild(ta); ta.select();
+document.execCommand('copy'); document.body.removeChild(ta);
+showCopied(btn);
+}
+}
+function showCopied(btn) {
+var orig = btn.textContent;
+btn.textContent = '✓ Link copied!';
+btn.style.background = '#3D6B4F';
+setTimeout(function() { btn.textContent = orig; btn.style.background = ''; }, 2500);
+}
+document.querySelectorAll('.nav-cta').forEach(function(el){
+el.addEventListener('click', function(e) {
+e.preventDefault();
+document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });
+});
+});
 </script>
 </body>
 </html>
