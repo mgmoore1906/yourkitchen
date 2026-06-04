@@ -30,6 +30,10 @@
   .step-num{width:28px;height:28px;border-radius:50%;background:var(--sage-light);color:var(--sage);font-family:'Lora',serif;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0}
   a{color:var(--sage)}
   .footer{margin-top:48px;padding-top:24px;border-top:.5px solid var(--border);font-size:13px;color:var(--stone)}
+  .shot{margin:20px 0;border:.5px solid var(--border);border-radius:14px;overflow:hidden;background:var(--white)}
+  .shot img{display:block;width:100%;height:auto}
+  .shot-cap{font-size:13px;color:var(--stone);padding:12px 16px;border-top:.5px solid var(--border);background:#FBFBF7}
+  .note{background:var(--sage-light);border-left:3px solid var(--sage);border-radius:8px;padding:14px 16px;font-size:14px;color:var(--forest);margin:20px 0}
 </style>
 </head>
 <body>
@@ -44,10 +48,26 @@
   <h1>SMS Opt-In & Consent</h1>
   <p class="sub">How users consent to receive text messages from YourKitchen.</p>
 
-  <p>YourKitchen LLC operates a meal coordination platform. This page documents our SMS program, how end users provide express written consent to receive messages, and the disclosures shown at the point of opt-in. It is provided for transparency and for messaging-compliance review.</p>
+  <p>YourKitchen LLC operates a meal coordination platform. This page is the complete, publicly accessible record of our SMS program: how end users provide express written consent, the exact disclosures shown at the point of opt-in, and a screenshot of the actual consent screen. No login is required to review any of this information.</p>
+
+  <div class="note">For compliance reviewers: the consent screen shown below is the exact first step every user completes during signup. The screenshot, consent language, and opt-in steps on this page fully document the opt-in flow — no account or login is needed to verify it.</div>
 
   <h2>How users opt in</h2>
-  <p>Users provide consent during account creation at <strong>app.yourkitchen.app</strong>. As the first step of onboarding, the user is shown a consent checkbox that must be actively checked before they can continue — the "Next" button remains disabled until the box is checked. Consent is never pre-checked or assumed.</p>
+  <p>YourKitchen collects SMS consent through <strong>two opt-in paths</strong>, depending on whether the person is a meal recipient or someone sending a meal (a coordinator). In both, the consent checkbox is unchecked by default, must be actively checked, and the action button stays disabled until it is. Consent is never pre-checked or assumed. The screenshots below show exactly what each user sees.</p>
+
+  <h2 style="font-size:18px;margin-top:28px">1. Recipient opt-in (account signup)</h2>
+  <p>When a recipient creates their YourKitchen account, the first step of onboarding presents a phone-number field and the SMS consent checkbox shown here:</p>
+  <div class="shot">
+    <img src="https://raw.githubusercontent.com/mgmoore1906/yourkitchen/main/consent-recipient.png" alt="YourKitchen recipient signup screen (Step 1 of 6) showing the phone number field and the SMS consent checkbox with the exact consent language.">
+    <div class="shot-cap">Recipient signup (Step 1 of 6). The phone field notes it is used only for Y/N meal confirmations via SMS, and the consent checkbox below it carries the full consent language with STOP/HELP. The box is unchecked by default.</div>
+  </div>
+
+  <h2 style="font-size:18px;margin-top:28px">2. Coordinator opt-in (sending a meal)</h2>
+  <p>When someone sends a meal to a recipient, the final checkout step presents their phone-number field and the same SMS consent checkbox shown here:</p>
+  <div class="shot">
+    <img src="https://raw.githubusercontent.com/mgmoore1906/yourkitchen/main/consent-coordinator.png" alt="YourKitchen coordinator checkout screen showing the phone number field and the SMS consent checkbox with the exact consent language and links to Privacy Policy and Terms.">
+    <div class="shot-cap">Coordinator checkout. The consent checkbox carries the full consent language with STOP/HELP and links to the Privacy Policy and Terms. The box is unchecked by default and must be checked to proceed.</div>
+  </div>
 
   <div class="consent-box">
     <p style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sage);margin-bottom:12px">Exact consent language shown at opt-in</p>
@@ -60,10 +80,11 @@
   </div>
 
   <h2>The opt-in steps</h2>
-  <div class="step"><div class="step-num">1</div><div>User visits app.yourkitchen.app and begins account creation.</div></div>
+  <p class="muted" style="margin-bottom:14px">Both paths follow the same pattern:</p>
+  <div class="step"><div class="step-num">1</div><div>User reaches the signup step (recipient) or the meal-checkout step (coordinator) in the YourKitchen app.</div></div>
   <div class="step"><div class="step-num">2</div><div>User enters their name and mobile phone number.</div></div>
   <div class="step"><div class="step-num">3</div><div>User actively checks the consent box shown above. The box is unchecked by default.</div></div>
-  <div class="step"><div class="step-num">4</div><div>User taps "Next" (disabled until the box is checked) to complete opt-in.</div></div>
+  <div class="step"><div class="step-num">4</div><div>User taps the action button (disabled until the box is checked) to complete opt-in.</div></div>
 
   <h2>What messages we send</h2>
   <ul>
