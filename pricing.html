@@ -18,6 +18,7 @@
   .pricing-cards{ display:grid; grid-template-columns:1fr; gap:16px; max-width:1040px; margin:0 auto; }
   @media (min-width:880px){ .pricing-cards{ grid-template-columns:1fr 1fr 1fr; align-items:start; } }
   .pcard{ background:var(--white); border:0.5px solid var(--border); border-radius:18px; padding:30px 26px 28px; position:relative; }
+  .pcard--feature, .pcard--founding{ padding-top:52px; }
   .pcard--feature{ border:2px solid var(--sage); }
   .pcard--founding{ background:linear-gradient(170deg,#2A3326 0%, var(--forest) 100%); color:var(--cream); border:2px solid var(--forest); }
   .pcard-name{ font-family:var(--serif); font-size:24px; font-weight:600; letter-spacing:-0.01em; color:var(--forest); }
@@ -30,7 +31,7 @@
   .pcard--founding .pcard-price small{ color:rgba(240,226,201,0.7); }
   .pcard-note{ font-size:11.5px; color:var(--stone); margin-bottom:16px; }
   .pcard--founding .pcard-note{ color:rgba(240,226,201,0.65); }
-  .pribbon{ position:absolute; top:22px; right:-2px; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:5px 12px 5px 14px; border-radius:20px 0 0 20px; color:#fff; }
+  .pribbon{ position:absolute; top:16px; right:16px; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:5px 12px; border-radius:20px; color:#fff; }
   .pribbon--sage{ background:linear-gradient(95deg,var(--sage-mid),var(--sage)); box-shadow:0 3px 10px rgba(61,107,79,0.35); }
   .pribbon--gold{ background:linear-gradient(95deg,var(--gold),var(--gold-deep)); box-shadow:0 3px 10px rgba(184,139,74,0.4); }
   .pcard-lead{ font-size:11.5px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--sage); margin:20px 0 10px; }
