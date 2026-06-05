@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="YourKitchen for organizations — meal coordination and home delivery for the people your organization serves. Home health, hospitals, NGOs, and food-security nonprofits.">
+<meta property="og:title" content="For Organizations — YourKitchen">
+<meta property="og:description" content="Meal coordination and home delivery for the populations you serve.">
+<meta property="og:url" content="https://yourkitchen.app/organizations.html">
+<meta property="og:type" content="website">
+<title>For Organizations — YourKitchen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  :root{ --serif:'Lora',Georgia,serif; }
+  .org-cases{ display:grid; grid-template-columns:1fr; gap:14px; max-width:920px; margin:0 auto; }
+  @media (min-width:760px){ .org-cases{ grid-template-columns:1fr 1fr; } }
+  .org-card{ background:var(--white); border:0.5px solid var(--border); border-radius:16px; padding:24px; text-align:left; }
+  .org-card .org-icon{ font-size:26px; margin-bottom:10px; }
+  .org-card h4{ font-family:var(--serif); font-size:18px; font-weight:500; color:var(--forest); margin:0 0 6px; }
+  .org-card p{ font-size:13.5px; color:var(--stone); line-height:1.6; margin:0; font-weight:300; }
+  .org-why{ max-width:760px; margin:48px auto 0; }
+  .org-why h3{ font-family:var(--serif); font-size:22px; font-weight:500; color:var(--forest); text-align:center; margin:0 0 24px; }
+  .org-points{ display:grid; grid-template-columns:1fr; gap:18px; }
+  @media (min-width:680px){ .org-points{ grid-template-columns:1fr 1fr 1fr; } }
+  .org-point{ text-align:center; padding:0 8px; }
+  .org-point .num{ font-family:var(--serif); font-size:28px; color:var(--sage); font-weight:600; }
+  .org-point h5{ font-size:14px; font-weight:600; color:var(--forest); margin:6px 0 4px; }
+  .org-point p{ font-size:12.5px; color:var(--stone); line-height:1.55; font-weight:300; margin:0; }
+  .org-cta{ max-width:760px; margin:52px auto 0; padding:34px 28px; background:linear-gradient(165deg,#2A3326,var(--forest)); border-radius:18px; color:var(--cream); text-align:center; position:relative; overflow:hidden; }
+  .org-cta::after{ content:''; position:absolute; right:-60px; bottom:-60px; width:220px; height:220px; border-radius:50%; background:radial-gradient(circle,rgba(107,158,126,0.22),transparent 70%); }
+  .org-cta h3{ font-family:var(--serif); font-size:23px; font-weight:500; color:var(--cream); margin:0 0 8px; position:relative; }
+  .org-cta p{ font-size:14px; color:rgba(250,250,245,0.8); line-height:1.6; max-width:520px; margin:0 auto 22px; font-weight:300; position:relative; }
+  .org-cta .btn{ position:relative; }
+  .org-cta .org-or{ display:block; margin-top:14px; font-size:12.5px; color:rgba(250,250,245,0.6); position:relative; }
+  .org-cta .org-or a{ color:#CDE3D5; }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <a class="nav-logo" href="index.html"><span class="nav-your">Your</span><span class="nav-kitchen">Kitchen</span></a>
+  <nav class="nav-links" id="navMenu">
+    <a href="how-it-works.html">How It Works</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="organizations.html" class="active">For Organizations</a>
+    <a href="about.html">Our Story</a>
+    <a class="nav-login" href="https://app.yourkitchen.app/login">Log in</a>
+    <a class="nav-cta" href="https://app.yourkitchen.app/signup">Get Started</a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</header>
+
+<section class="page-head">
+  <div class="eyebrow reveal">For Organizations</div>
+  <h1 class="reveal d1">Care, delivered<br><em>to the people you serve.</em></h1>
+  <p class="reveal d2">We're beginning to work with a handful of organizations who care for people at scale — getting warm, dignified meals to the doorsteps of the populations they serve. If that's your mission too, we'd love to talk.</p>
+</section>
+
+<div class="container-wide">
+  <div class="section">
+
+    <div class="org-cases">
+
+      <div class="org-card reveal d1">
+        <div class="org-icon">🏠</div>
+        <h4>Home health &amp; aide organizations</h4>
+        <p>Your aides already show up for clients who can't easily cook. YourKitchen lets you arrange reliable home-delivered meals around each client's needs — without adding to your team's load.</p>
+      </div>
+
+      <div class="org-card reveal d2">
+        <div class="org-icon">🥫</div>
+        <h4>Food-security nonprofits</h4>
+        <p>For the families you serve, a hot meal delivered home with dignity is different from a pickup line. We help you reach food-insecure households where they are.</p>
+      </div>
+
+      <div class="org-card reveal d3">
+        <div class="org-icon">🏥</div>
+        <h4>Hospitals &amp; care teams</h4>
+        <p>Discharge is when support drops off. Coordinate post-surgical and recovery meals for patients heading home — a simple, trackable extension of the care you already provide.</p>
+      </div>
+
+      <div class="org-card reveal d1">
+        <div class="org-icon">🤝</div>
+        <h4>NGOs &amp; community programs</h4>
+        <p>Whatever population you serve — new parents, the grieving, the isolated, the recovering — we can stand up a meal-coordination layer that fits how your community already works.</p>
+      </div>
+
+    </div>
+
+    <div class="org-why reveal">
+      <h3>Why organizations choose YourKitchen</h3>
+      <div class="org-points">
+        <div class="org-point">
+          <div class="num">1</div>
+          <h5>Real meals, real homes</h5>
+          <p>Restaurant-quality meals delivered to the doorstep — not a pantry box or a pickup line.</p>
+        </div>
+        <div class="org-point">
+          <div class="num">2</div>
+          <h5>Dignity built in</h5>
+          <p>Recipients confirm before anything arrives. The experience feels like care from a neighbor, not a service.</p>
+        </div>
+        <div class="org-point">
+          <div class="num">3</div>
+          <h5>Coordination, handled</h5>
+          <p>We manage the scheduling, confirmation, and delivery so your team can stay focused on people.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="org-cta reveal">
+      <h3>Let's talk about your population</h3>
+      <p>We're partnering with a small group of mission-aligned organizations as we grow. Tell us who you serve, and we'll explore how YourKitchen can help.</p>
+      <a class="btn btn-primary" href="https://calendly.com/REPLACE_WITH_YOUR_CALENDLY" target="_blank" rel="noopener noreferrer">Schedule a conversation</a>
+      <span class="org-or">Or email us directly at <a href="mailto:marques@yourkitchen.app?subject=YourKitchen%20for%20Organizations">marques@yourkitchen.app</a></span>
+    </div>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-your">Your</div>
+  <div class="footer-kitchen">Kitchen</div>
+  <p class="footer-tagline">"Your kitchen, covered."</p>
+  <div class="footer-links">
+    <a href="how-it-works.html">How It Works</a><span class="footer-sep">·</span>
+    <a href="pricing.html">Pricing</a><span class="footer-sep">·</span>
+    <a href="organizations.html">For Organizations</a><span class="footer-sep">·</span>
+    <a href="about.html">Our Story</a><span class="footer-sep">·</span>
+    <a href="privacy.html">Privacy</a><span class="footer-sep">·</span>
+    <a href="terms.html">Terms</a><span class="footer-sep">·</span>
+    <a href="sms-opt-in.html">SMS</a><span class="footer-sep">·</span>
+    <a href="mailto:marques@yourkitchen.app">Contact</a>
+  </div>
+  <p class="footer-copy">© <span id="year">2026</span> YourKitchen LLC · Waller, TX · Built with love for Danielle</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
