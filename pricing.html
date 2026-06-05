@@ -11,8 +11,63 @@
 <title>Pricing — YourKitchen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+  :root{ --gold:#B88B4A; --gold-deep:#C17F47; --gold-light:#F5EBDD; --serif:'Lora',Georgia,serif; }
+  .pricing-cards{ display:grid; grid-template-columns:1fr; gap:16px; max-width:1040px; margin:0 auto; }
+  @media (min-width:880px){ .pricing-cards{ grid-template-columns:1fr 1fr 1fr; align-items:start; } }
+  .pcard{ background:var(--white); border:0.5px solid var(--border); border-radius:18px; padding:30px 26px 28px; position:relative; }
+  .pcard--feature{ border:2px solid var(--sage); }
+  .pcard--founding{ background:linear-gradient(170deg,#2A3326 0%, var(--forest) 100%); color:var(--cream); border:2px solid var(--forest); }
+  .pcard-name{ font-family:var(--serif); font-size:24px; font-weight:600; letter-spacing:-0.01em; color:var(--forest); }
+  .pcard--founding .pcard-name{ color:#F0E2C9; }
+  .pcard-for{ font-size:12.5px; color:var(--stone); margin-top:5px; min-height:44px; line-height:1.45; }
+  .pcard--founding .pcard-for{ color:rgba(240,226,201,0.78); }
+  .pcard-price{ font-family:var(--serif); font-size:30px; font-weight:600; color:var(--forest); margin:14px 0 2px; }
+  .pcard-price small{ font-size:14px; font-weight:400; color:var(--stone); }
+  .pcard--founding .pcard-price{ color:#E9CF9B; }
+  .pcard--founding .pcard-price small{ color:rgba(240,226,201,0.7); }
+  .pcard-note{ font-size:11.5px; color:var(--stone); margin-bottom:16px; }
+  .pcard--founding .pcard-note{ color:rgba(240,226,201,0.65); }
+  .pribbon{ position:absolute; top:22px; right:-2px; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:5px 12px 5px 14px; border-radius:20px 0 0 20px; color:#fff; }
+  .pribbon--sage{ background:linear-gradient(95deg,var(--sage-mid),var(--sage)); box-shadow:0 3px 10px rgba(61,107,79,0.35); }
+  .pribbon--gold{ background:linear-gradient(95deg,var(--gold),var(--gold-deep)); box-shadow:0 3px 10px rgba(184,139,74,0.4); }
+  .pcard-lead{ font-size:11.5px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--sage); margin:20px 0 10px; }
+  .pcard--founding .pcard-lead{ color:#D8B878; }
+  .pfeats{ list-style:none; padding:0; margin:0; }
+  .pfeats li{ font-size:12.5px; line-height:1.45; color:var(--forest); padding:7px 0 7px 24px; position:relative; border-bottom:0.5px solid rgba(0,0,0,0.05); }
+  .pcard--founding .pfeats li{ color:rgba(250,250,245,0.92); border-bottom-color:rgba(255,255,255,0.08); }
+  .pfeats li:last-child{ border-bottom:none; }
+  .pfeats li::before{ content:''; position:absolute; left:2px; top:10px; width:13px; height:13px; border-radius:50%; background:var(--sage-light); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233D6B4F' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"); background-size:9px; background-repeat:no-repeat; background-position:center; }
+  .pcard--founding .pfeats li::before{ background-color:rgba(216,184,120,0.2); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D8B878' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E"); }
+  .pfeats li b{ font-weight:600; }
+  .pcard .btn{ width:100%; margin-top:18px; box-sizing:border-box; text-align:center; }
+  .matrix-wrap{ max-width:1040px; margin:56px auto 0; }
+  .matrix-title{ font-family:var(--serif); font-size:23px; font-weight:600; text-align:center; margin-bottom:4px; color:var(--forest); }
+  .matrix-sub{ text-align:center; font-size:13px; color:var(--stone); margin-bottom:26px; }
+  .matrix-scroll{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  table.matrix{ width:100%; border-collapse:collapse; min-width:520px; }
+  table.matrix thead th{ font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:11px 8px; text-align:center; color:var(--forest); border-bottom:2px solid var(--sage); }
+  table.matrix thead th.feat-col{ text-align:left; color:var(--stone); width:46%; }
+  table.matrix thead th.f-col{ color:var(--gold-deep); }
+  table.matrix tbody td{ padding:9px 8px; font-size:12.5px; border-bottom:0.5px solid var(--border); text-align:center; }
+  table.matrix tbody td.feat-col{ text-align:left; color:var(--forest); font-weight:500; }
+  table.matrix tbody td.feat-col small{ display:block; font-weight:400; color:var(--stone); font-size:11px; margin-top:1px; }
+  table.matrix tbody tr.section-row td{ background:var(--sage-light); font-size:10.5px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--sage); text-align:left; padding:7px 8px; }
+  .yes{ color:var(--sage); font-weight:700; }
+  .no{ color:#C4CCC6; }
+  .val{ color:var(--forest); font-weight:600; }
+  .val.f{ color:var(--gold-deep); }
+  .f-cell{ background:rgba(184,139,74,0.06); }
+  .founding-strip{ max-width:1040px; margin:40px auto 0; padding:26px 28px; background:linear-gradient(165deg,#2A3326,var(--forest)); border-radius:16px; color:var(--cream); position:relative; overflow:hidden; }
+  .founding-strip::after{ content:''; position:absolute; right:-60px; bottom:-60px; width:220px; height:220px; border-radius:50%; background:radial-gradient(circle,rgba(184,139,74,0.22),transparent 70%); }
+  .founding-strip h3{ font-family:var(--serif); font-size:19px; color:#E9CF9B; margin:0 0 6px; position:relative; }
+  .founding-strip p{ font-size:13px; color:rgba(250,250,245,0.8); max-width:680px; position:relative; line-height:1.55; margin:0 0 16px; }
+  .founding-strip .btn{ position:relative; }
+  .pilot-line{ text-align:center; font-size:13px; color:var(--stone); margin:34px auto 0; max-width:640px; }
+  .pilot-line a{ color:var(--sage); font-weight:500; }
+</style>
 </head>
 <body>
 
@@ -36,58 +91,132 @@
 
 <div class="container-wide">
   <div class="section">
-    <div class="tiers">
 
-      <!-- Care -->
-      <div class="tier reveal d1">
-        <div class="tier-name">Care</div>
-        <div class="tier-price">Free</div>
-        <div class="tier-sub">Everything a single village needs to start showing up.</div>
-        <ul class="tier-feats">
-          <li>One Kitchen</li>
-          <li>Unlimited calendar dates</li>
-          <li>Full village invites</li>
-          <li>Y/N confirmation by text</li>
-          <li>Delivery confirmation to coordinators</li>
+    <div class="pricing-cards">
+
+      <div class="pcard reveal d1">
+        <div class="pcard-name">Care</div>
+        <div class="pcard-for">For anyone gathering meals around someone they love.</div>
+        <div class="pcard-price">Free</div>
+        <div class="pcard-note">No card required to start.</div>
+        <div class="pcard-lead">What's included</div>
+        <ul class="pfeats">
+          <li>One <b>kitchen</b> for your recipient</li>
+          <li><b>Unlimited calendar</b> &mdash; claim any date</li>
+          <li>Add favorite <b>restaurants &amp; meals</b></li>
+          <li>Home delivery by courier</li>
+          <li>Y/N text confirmation before any charge</li>
+          <li>Live delivery tracking for the recipient</li>
+          <li><b>Delivery confirmation</b> to the sender</li>
+          <li>Shareable kitchen link &amp; invites</li>
+          <li><b>Village board</b> &mdash; notes from supporters</li>
+          <li><b>Insights</b> &mdash; meals received, support shown</li>
         </ul>
         <a class="btn btn-ghost" href="https://app.yourkitchen.app/signup">Start free</a>
       </div>
 
-      <!-- Care+ -->
-      <div class="tier tier--feature reveal d2">
-        <div class="tier-flag">Most popular</div>
-        <div class="tier-name">Care+</div>
-        <div class="tier-price">$9.99<small> /mo</small></div>
-        <div class="tier-sub">Or $90/year. For families juggling more than one village.</div>
-        <ul class="tier-feats">
-          <li>Everything in Care</li>
-          <li>Multiple kitchens</li>
-          <li>Custom kitchen link</li>
-          <li>Warmer thank-you &amp; tracking layer</li>
+      <div class="pcard pcard--feature reveal d2">
+        <div class="pribbon pribbon--sage">Most loved</div>
+        <div class="pcard-name">Care+</div>
+        <div class="pcard-for">For families who want the village to feel like a keepsake.</div>
+        <div class="pcard-price">$9.99<small> / month</small></div>
+        <div class="pcard-note">or $90/year (save 25%) &middot; cancel anytime</div>
+        <div class="pcard-lead">Everything in Care, plus</div>
+        <ul class="pfeats">
+          <li><b>The full village</b> &mdash; photos, reactions &amp; replies</li>
+          <li><b>Village keepsake</b> &mdash; your record, kept &amp; saved</li>
+          <li>Cover <b>more loved ones</b> &mdash; multiple kitchens</li>
+          <li><b>Personal thank-you</b> sent to each sender</li>
+          <li>Live tracking shared with the sender</li>
+          <li><b>More restaurants &amp; meals</b> to choose from</li>
+          <li>Your own custom kitchen web address</li>
+          <li>Home-cooked &amp; personal drop-off option</li>
           <li>Priority support</li>
         </ul>
         <a class="btn btn-primary" href="https://app.yourkitchen.app/signup">Choose Care+</a>
       </div>
 
-      <!-- Founding -->
-      <div class="tier reveal d3">
-        <div class="tier-flag is-founding">First 250 only</div>
-        <div class="tier-name">Founding Member</div>
-        <div class="tier-price">$200<small> once</small></div>
-        <div class="tier-sub">Three years of Care+ and a permanent place in the story. Your 3 years starts at beta launch — the pilot is on us.</div>
-        <ul class="tier-feats">
-          <li>3 years of Care+ included</li>
-          <li>Founding Member badge</li>
-          <li>Founder access &amp; beta features</li>
-          <li>Gift-90-days code to share</li>
-          <li>Founders Gift Box</li>
+      <div class="pcard pcard--founding reveal d3">
+        <div class="pribbon pribbon--gold">First 250 only</div>
+        <div class="pcard-name">Founding Member</div>
+        <div class="pcard-for">For the first people who help this stand up.</div>
+        <div class="pcard-price">$200<small> once</small></div>
+        <div class="pcard-note">Includes 3 years of Care+ &mdash; starting at beta launch.</div>
+        <div class="pcard-lead">Everything in Care+, plus</div>
+        <ul class="pfeats">
+          <li><b>Permanent Founding badge</b></li>
+          <li>A <b>direct line</b> to the founder</li>
+          <li><b>Early access</b> to new features first</li>
+          <li>Your name in the <b>Founding story</b></li>
+          <li><b>Gift 90 days of Care+</b> to a friend</li>
+          <li>Private <b>founders' community</b></li>
+          <li><b>Founders Gift Box</b> &mdash; shipped to your door</li>
         </ul>
         <a class="btn btn-dark" href="https://buy.stripe.com/5kQ00beDq9XD9BX5w5abK01" target="_blank" rel="noopener noreferrer">Become a founder</a>
       </div>
 
     </div>
 
-    <p class="center section-body" style="margin-top:34px;">During the pilot, every member gets Care+ free. <a href="how-it-works.html" style="color:var(--sage);font-weight:500;">See how it works →</a></p>
+    <div class="matrix-wrap reveal">
+      <div class="matrix-title">Every feature, side by side</div>
+      <div class="matrix-sub">So you can see exactly what each plan gives.</div>
+      <div class="matrix-scroll">
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th class="feat-col">Feature</th>
+              <th>Care</th>
+              <th>Care+</th>
+              <th class="f-col">Founding</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="section-row"><td colspan="4">The essentials</td></tr>
+            <tr><td class="feat-col">Kitchens<small>Loved ones you can cover</small></td><td class="val">1</td><td class="val">More</td><td class="f-cell val f">More</td></tr>
+            <tr><td class="feat-col">Calendar window</td><td class="val">Unlimited</td><td class="val">Unlimited</td><td class="f-cell val f">Unlimited</td></tr>
+            <tr><td class="feat-col">Restaurants &amp; meals to choose from</td><td class="val">A few</td><td class="val">Many more</td><td class="f-cell val f">Many more</td></tr>
+
+            <tr class="section-row"><td colspan="4">Sending a meal</td></tr>
+            <tr><td class="feat-col">Home delivery by courier</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="f-cell yes">&#10003;</td></tr>
+            <tr><td class="feat-col">Y/N text confirmation before charge</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="f-cell yes">&#10003;</td></tr>
+            <tr><td class="feat-col">Live tracking for the recipient</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="f-cell yes">&#10003;</td></tr>
+            <tr><td class="feat-col">Delivery confirmation to the sender<small>So no one has to ask &ldquo;did it arrive?&rdquo;</small></td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="f-cell yes">&#10003;</td></tr>
+            <tr><td class="feat-col">Personal thank-you to the sender</td><td class="no">&mdash;</td><td class="yes">&#10003;</td><td class="f-cell yes">&#10003;</td></tr>
+            <tr><td class="feat-col">Tracking shared with the sender</td><td class="no">&mdash;</td><td class="yes">&#10003;</td><td class="f-cell yes">&#10003;</td></tr>
+            <tr><td class="feat-col">Home-cooked &amp; personal drop-off option</td><td class="no">&mdash;</td><td class="yes">&#10003;</td><td class="f-cell yes">&#10003;</td></tr>
+
+            <tr class="section-row"><td colspan="4">The village</td></tr>
+            <tr><td class="feat-col">Notes from supporters</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="f-cell yes">&#10003;</td></tr>
+            <tr><td class="feat-col">Photos, reactions &amp; threaded replies</td><td class="no">&mdash;</td><td class="yes">&#10003;</td><td class="f-cell yes">&#10003;</td></tr>
+            <tr><td class="feat-col">Keepsake &amp; archive<small>Your village is kept, not deleted</small></td><td class="no">&mdash;</td><td class="yes">&#10003;</td><td class="f-cell yes">&#10003;</td></tr>
+
+            <tr class="section-row"><td colspan="4">Growing &amp; sharing</td></tr>
+            <tr><td class="feat-col">Shareable kitchen link</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="f-cell yes">&#10003;</td></tr>
+            <tr><td class="feat-col">Custom kitchen web address</td><td class="no">&mdash;</td><td class="yes">&#10003;</td><td class="f-cell yes">&#10003;</td></tr>
+            <tr><td class="feat-col">Insights dashboard</td><td class="yes">&#10003;</td><td class="yes">&#10003;</td><td class="f-cell yes">&#10003;</td></tr>
+            <tr><td class="feat-col">Priority support</td><td class="no">&mdash;</td><td class="yes">&#10003;</td><td class="f-cell yes">&#10003;</td></tr>
+
+            <tr class="section-row"><td colspan="4">Founding privileges</td></tr>
+            <tr><td class="feat-col">Permanent Founding badge</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="f-cell yes">&#10003;</td></tr>
+            <tr><td class="feat-col">Direct line to the founder</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="f-cell yes">&#10003;</td></tr>
+            <tr><td class="feat-col">Early access to new features</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="f-cell yes">&#10003;</td></tr>
+            <tr><td class="feat-col">Name in the Founding story</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="f-cell yes">&#10003;</td></tr>
+            <tr><td class="feat-col">Gift 90 days of Care+ to a friend<small>A share-with-someone code</small></td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="f-cell yes">&#10003;</td></tr>
+            <tr><td class="feat-col">Private founders&rsquo; community</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="f-cell yes">&#10003;</td></tr>
+            <tr><td class="feat-col">Founders Gift Box</td><td class="no">&mdash;</td><td class="no">&mdash;</td><td class="f-cell yes">&#10003;</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="founding-strip reveal">
+      <h3>Become a Founding Member</h3>
+      <p>Founding Members are the first believers &mdash; the people who help YourKitchen stand up before the world knows its name. You'll get the badge, the access, the founders' community, and a Founders Gift Box shipped to your door. Your 3 years of Care+ begins at beta launch, so the pilot is on us. Only 250 will ever exist.</p>
+      <a class="btn btn-primary" href="https://buy.stripe.com/5kQ00beDq9XD9BX5w5abK01" target="_blank" rel="noopener noreferrer">Become a founder</a>
+    </div>
+
+    <p class="pilot-line reveal">During the pilot, every member gets Care+ free. <a href="how-it-works.html">See how it works &rarr;</a></p>
+
   </div>
 </div>
 
