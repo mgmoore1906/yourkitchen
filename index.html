@@ -16,6 +16,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+<style>
+  .yk-form-card { max-width:440px; margin:0 auto; background:var(--white,#fff); border:0.5px solid var(--border); border-radius:18px; padding:28px 26px; box-shadow:0 12px 40px rgba(30,38,32,0.08); text-align:left; }
+  .yk-form-title { font-family:'Lora',serif; font-size:22px; font-weight:500; color:var(--forest); margin:0 0 18px; letter-spacing:-0.3px; }
+  .yk-field { margin-bottom:16px; }
+  .yk-field label { display:block; font-size:13px; font-weight:600; color:var(--forest); margin-bottom:6px; }
+  .yk-field input { width:100%; box-sizing:border-box; padding:12px 14px; border:1px solid var(--border); border-radius:10px; font-family:'DM Sans',sans-serif; font-size:15px; color:var(--forest); background:var(--cream); transition:border-color .15s, background .15s; }
+  .yk-field input:focus { outline:none; border-color:var(--sage-mid); background:var(--white,#fff); }
+  .yk-field input::placeholder { color:#A9B4AC; }
+  .yk-hint { display:block; font-size:12px; color:var(--stone); margin-top:6px; font-weight:300; }
+  .yk-submit { width:100%; margin-top:6px; cursor:pointer; border:none; font-size:15px; font-weight:600; padding:13px; border-radius:10px; }
+  .yk-msg { display:none; font-size:14px; border-radius:10px; padding:12px 14px; margin-bottom:16px; }
+  .yk-msg--error { color:#7a1d1d; background:#ffeded; border:1px solid #f3b4b4; }
+  .yk-msg--success { color:#0a5a2e; background:#e7faf0; border:1px solid #9ad9b6; }
+</style>
 </head>
 <body>
 
@@ -44,14 +59,31 @@
   <p class="hero-sub reveal d2">YourKitchen coordinates meals from the people who love you — so dinner is one less thing to carry when life gets heavy.</p>
 
   <div class="brevo-wrapper reveal d3">
-    <iframe
-      width="100%"
-      height="420"
-      src="https://594524f6.sibforms.com/serve/MUIFACSPo6AVM8qMjOdfV49N_JMjI3X5-SYkxOp1TSEP2PZQ4dAlnvzL5azY0NFYfJE2-dSe6C4S38qON4rn8zyxGgCnUi2UJ8R-s2lj3AN7uGb_8CjbgMNXTHpiVspXL9V5Grsove-eX8YQRe-UxZ9C3gJt4y1tXoTmkqYBkxA0LEovvaYVl2tKXATbH8zkaPd5chivorcbbkMHWQ=="
-      frameborder="0"
-      scrolling="auto"
-      allowfullscreen>
-    </iframe>
+    <div class="yk-form-card">
+      <div id="error-message" class="sib-form-message-panel yk-msg yk-msg--error">
+        <span class="sib-form-message-panel__inner-text">Your subscription could not be saved. Please try again.</span>
+      </div>
+      <div id="success-message" class="sib-form-message-panel yk-msg yk-msg--success">
+        <span class="sib-form-message-panel__inner-text">You're on the list — we'll be in touch. 🧡</span>
+      </div>
+      <div id="sib-container">
+        <form id="sib-form" method="POST" action="https://594524f6.sibforms.com/serve/MUIFACSPo6AVM8qMjOdfV49N_JMjI3X5-SYkxOp1TSEP2PZQ4dAlnvzL5azY0NFYfJE2-dSe6C4S38qON4rn8zyxGgCnUi2UJ8R-s2lj3AN7uGb_8CjbgMNXTHpiVspXL9V5Grsove-eX8YQRe-UxZ9C3gJt4y1tXoTmkqYBkxA0LEovvaYVl2tKXATbH8zkaPd5chivorcbbkMHWQ==" data-type="subscription">
+          <h3 class="yk-form-title">Join the waiting list</h3>
+          <div class="yk-field">
+            <label for="FIRSTNAME">First name</label>
+            <input type="text" id="FIRSTNAME" name="FIRSTNAME" maxlength="200" autocomplete="given-name" placeholder="Your first name" data-required="true" required />
+          </div>
+          <div class="yk-field">
+            <label for="EMAIL">Email address</label>
+            <input type="email" id="EMAIL" name="EMAIL" autocomplete="email" placeholder="you@example.com" data-required="true" required />
+            <span class="yk-hint">No cost, no burdening emails — just a heads-up when we launch.</span>
+          </div>
+          <button class="btn btn-primary yk-submit" form="sib-form" type="submit">Join the list</button>
+          <input type="text" name="email_address_check" value="" class="input--hidden" style="display:none!important;" />
+          <input type="hidden" name="locale" value="en" />
+        </form>
+      </div>
+    </div>
   </div>
   <p class="brevo-note">No spam. Ever. Just a heads-up when we launch.</p>
 
@@ -172,6 +204,16 @@
   <p class="footer-copy">© <span id="year">2026</span> YourKitchen LLC · Waller, TX · Built with love for Danielle</p>
 </footer>
 
+<script>
+  window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+  window.LOCALE = 'en';
+  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+  window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank. ";
+  window.GENERIC_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+  window.translation = { common: { selectedList: '{quantity} list selected', selectedLists: '{quantity} lists selected', selectedOption: '{quantity} selected', selectedOptions: '{quantity} selected' } };
+  var AUTOHIDE = Boolean(0);
+</script>
+<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
