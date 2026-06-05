@@ -5,41 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="YourKitchen Privacy Policy — how we collect, use, and protect your information.">
 <title>Privacy Policy — YourKitchen</title>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=4">
 <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  :root{--sage:#3D6B4F;--sage-mid:#6B9E7E;--sage-light:#EAF2ED;--cream:#FAFAF5;--forest:#1E2620;--stone:#6B7066;--border:#DDE8E0;--white:#fff}
-  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--forest);line-height:1.7}
-  .nav{background:var(--cream);border-bottom:.5px solid var(--border);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
-  .nav-logo{display:flex;flex-direction:column;line-height:1;text-decoration:none}
-  .nav-your{font-size:9px;font-weight:500;letter-spacing:5px;color:var(--sage-mid);text-transform:uppercase}
-  .nav-kitchen{font-family:'Lora',serif;font-size:20px;font-weight:500;color:var(--forest)}
-  .nav-back{font-size:13px;color:var(--sage);text-decoration:none;font-weight:500}
-  .wrap{max-width:760px;margin:0 auto;padding:48px 24px 80px}
-  h1{font-family:'Lora',serif;font-size:34px;font-weight:500;color:var(--forest);letter-spacing:-.5px;margin-bottom:6px}
-  .updated{font-size:13px;color:var(--stone);margin-bottom:36px}
-  h2{font-family:'Lora',serif;font-size:21px;font-weight:500;color:var(--forest);margin:34px 0 10px;letter-spacing:-.3px}
-  h3{font-size:15px;font-weight:600;color:var(--forest);margin:20px 0 6px}
-  p{font-size:15px;color:var(--forest);margin-bottom:14px}
-  ul{margin:0 0 16px 22px}
-  li{font-size:15px;color:var(--forest);margin-bottom:8px}
-  a{color:var(--sage)}
-  strong{font-weight:600}
-  .highlight{background:var(--sage-light);border:1px solid var(--sage);border-radius:14px;padding:20px 24px;margin:24px 0}
-  .footer{margin-top:48px;padding-top:24px;border-top:.5px solid var(--border);font-size:13px;color:var(--stone)}
-  .footer a{color:var(--stone)}
+  /* Document styles — scoped to .doc so they never touch the shared nav/footer */
+  .doc{max-width:760px;margin:0 auto;padding:56px 24px 80px}
+  .doc h1{font-family:'Lora',serif;font-size:clamp(28px,5vw,34px);font-weight:500;color:var(--forest);letter-spacing:-.5px;margin-bottom:6px}
+  .doc .updated{font-size:14px;color:var(--stone);margin-bottom:36px}
+  .doc h2{font-family:'Lora',serif;font-size:21px;font-weight:500;color:var(--forest);margin:34px 0 10px;letter-spacing:-.3px}
+  .doc h3{font-size:15px;font-weight:600;color:var(--forest);margin:20px 0 6px}
+  .doc p{font-size:15px;color:var(--forest);margin-bottom:14px;line-height:1.75}
+  .doc ul{margin:0 0 16px 22px}
+  .doc li{font-size:15px;color:var(--forest);margin-bottom:8px;line-height:1.7}
+  .doc a{color:var(--sage)}
+  .doc strong{font-weight:600}
+  .doc .highlight{background:var(--sage-light);border:1px solid var(--sage);border-radius:14px;padding:20px 24px;margin:24px 0}
 </style>
 </head>
 <body>
-<div class="nav">
-  <a class="nav-logo" href="/">
+
+<header class="site-nav">
+  <a class="nav-logo" href="index.html">
     <span class="nav-your">Your</span>
     <span class="nav-kitchen">Kitchen</span>
   </a>
-  <a class="nav-back" href="/">← Back to home</a>
-</div>
+  <nav class="nav-links" id="navMenu">
+    <a href="how-it-works.html">How It Works</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="organizations.html">For Organizations</a>
+    <a href="about.html">Our Story</a>
+    <a class="nav-login" href="https://app.yourkitchen.app/login">Log in</a>
+    <a class="nav-cta" href="https://app.yourkitchen.app/signup">Get Started</a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
 
-<div class="wrap">
+<main class="doc">
   <h1>Privacy Policy</h1>
   <p class="updated">Last updated: May 28, 2026</p>
 
@@ -66,7 +71,7 @@
 
   <div class="highlight">
     <h3 style="margin-top:0">SMS Consent &amp; Phone Numbers</h3>
-    <p style="margin-bottom:0">Mobile information and SMS opt-in consent are <strong>never shared with third parties or affiliates for their marketing purposes</strong>. Your phone number is used solely to operate the YourKitchen Service — to send meal proposals, confirmations, and delivery updates you have consented to receive. You may opt out at any time by replying STOP. See our <a href="/sms-opt-in.html">SMS Opt-In page</a> and <a href="/terms.html">Terms of Service, Section 3</a> for details.</p>
+    <p style="margin-bottom:0">Mobile information and SMS opt-in consent are <strong>never shared with third parties or affiliates for their marketing purposes</strong>. Your phone number is used solely to operate the YourKitchen Service — to send meal proposals, confirmations, and delivery updates you have consented to receive. You may opt out at any time by replying STOP. See our <a href="sms-opt-in.html">SMS Opt-In page</a> and <a href="terms.html">Terms of Service, Section 3</a> for details.</p>
   </div>
 
   <h2>3. How We Share Information</h2>
@@ -101,11 +106,25 @@
 
   <h2>9. Contact</h2>
   <p>Questions about this Privacy Policy may be directed to YourKitchen LLC at marques@yourkitchen.app.</p>
+</main>
 
-  <div class="footer">
-    YourKitchen LLC · Hockley, TX · <a href="mailto:marques@yourkitchen.app">marques@yourkitchen.app</a><br>
-    <a href="/">Home</a> · <a href="/terms.html">Terms of Service</a> · <a href="/sms-opt-in.html">SMS Opt-In</a>
+<footer class="site-footer">
+  <div class="footer-your">Your</div>
+  <div class="footer-kitchen">Kitchen</div>
+  <p class="footer-tagline">"Your kitchen, covered."</p>
+  <div class="footer-links">
+    <a href="how-it-works.html">How It Works</a><span class="footer-sep">·</span>
+    <a href="pricing.html">Pricing</a><span class="footer-sep">·</span>
+    <a href="organizations.html">For Organizations</a><span class="footer-sep">·</span>
+    <a href="about.html">Our Story</a><span class="footer-sep">·</span>
+    <a href="privacy.html">Privacy</a><span class="footer-sep">·</span>
+    <a href="terms.html">Terms</a><span class="footer-sep">·</span>
+    <a href="sms-opt-in.html">SMS</a><span class="footer-sep">·</span>
+    <a href="mailto:marques@yourkitchen.app">Contact</a>
   </div>
-</div>
+  <p class="footer-copy">© <span id="year">2026</span> YourKitchen LLC · Hockley, TX · Built with love for Danielle</p>
+</footer>
+
+<script src="script.js?v=4"></script>
 </body>
 </html>
