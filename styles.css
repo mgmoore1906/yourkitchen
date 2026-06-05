@@ -106,7 +106,7 @@ img { max-width:100%; display:block; }
     padding:11px 0;
   }
   .nav-links > a.active { color:var(--sage-mid); }
-  .nav-login { font-family:'DM Sans',sans-serif;font-size:16px;opacity:.55;margin-top:8px; }
+  .nav-login { opacity:.65;margin-top:4px; }
   .nav-cta { margin-top:18px;padding:15px 40px;font-size:15px;border-radius:11px; }
 
   body.nav-open { overflow:hidden; }
