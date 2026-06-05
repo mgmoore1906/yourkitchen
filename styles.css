@@ -91,6 +91,10 @@ img { max-width:100%; display:block; }
 /* ---------- Mobile nav ---------- */
 @media (max-width:780px) {
   .site-nav { padding:14px 20px; }
+  /* On mobile the menu is a position:fixed full-screen overlay. backdrop-filter
+     on .site-nav would make that overlay anchor to the nav bar instead of the
+     viewport, collapsing it into the top strip — so we drop the blur here. */
+  .site-nav { backdrop-filter:none; -webkit-backdrop-filter:none; background:var(--cream); }
   .nav-toggle { display:flex; }
   .nav-links {
     position:fixed;inset:0;top:0;background:var(--forest);
