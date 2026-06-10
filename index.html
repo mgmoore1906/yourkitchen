@@ -46,7 +46,7 @@
     <a href="organizations.html">For Organizations</a>
     <a href="about.html">Our Story</a>
     <a class="nav-login" href="https://app.yourkitchen.app/login">Log in</a>
-    <a class="nav-cta" href="https://app.yourkitchen.app/signup">Get Started</a>
+    <a class="nav-cta" href="https://app.yourkitchen.app/signup" onclick="return openPilotModal(event)">Get Started</a>
   </nav>
   <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -55,9 +55,14 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero" id="waitlist">
-  <div class="eyebrow reveal">Coming August 2026</div>
+  <div class="eyebrow reveal">The pilot is open · free to join</div>
   <h1 class="reveal d1">Your village is ready.<br><em>Let them show up.</em></h1>
   <p class="hero-sub reveal d2">YourKitchen coordinates meals from the people who love you — so dinner is one less thing to carry when life gets heavy.</p>
+
+  <div class="reveal d2" style="margin:6px 0 24px;">
+    <button class="btn btn-primary" style="font-size:16px;padding:15px 30px;" onclick="openPilotModal(event)">Join the pilot — it&rsquo;s open</button>
+    <p style="font-size:13px;color:var(--stone);margin:14px 0 0;">Pilot families get full access, free. Prefer to wait? Leave your email below for launch.</p>
+  </div>
 
   <div class="brevo-wrapper reveal d3">
     <div class="yk-form-card">
@@ -279,6 +284,59 @@
       });
   });
 })();
+</script>
+
+<!-- ===== PILOT WELCOME MODAL ===== -->
+<style>
+.yk-modal-overlay{position:fixed;inset:0;background:rgba(30,38,32,.55);display:none;align-items:center;justify-content:center;z-index:2000;padding:18px;}
+.yk-modal-overlay.open{display:flex;}
+.yk-modal{position:relative;background:var(--cream);border:1px solid var(--border);border-radius:20px;max-width:480px;width:100%;max-height:90vh;overflow-y:auto;padding:30px 26px 26px;box-shadow:0 24px 70px rgba(30,38,32,.35);font-family:'DM Sans',sans-serif;}
+.yk-modal-x{position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;color:var(--stone);cursor:pointer;line-height:1;padding:6px;}
+.yk-modal-eyebrow{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--sage-mid);margin-bottom:8px;}
+.yk-modal-title{font-family:'Lora',serif;font-size:24px;font-weight:600;color:var(--forest);margin:0 0 10px;line-height:1.2;}
+.yk-modal-lead{font-size:14.5px;color:var(--stone);line-height:1.6;margin:0 0 4px;}
+.yk-modal-block{border-top:1px solid var(--border);padding-top:14px;margin-top:16px;}
+.yk-modal-block h3{font-family:'Lora',serif;font-size:15px;font-weight:600;color:var(--sage);margin:0 0 6px;}
+.yk-modal-block p{font-size:14px;color:var(--forest);line-height:1.6;margin:0 0 10px;opacity:.92;}
+.yk-modal-form{display:inline-block;font-size:14px;padding:9px 16px;margin-top:2px;}
+.yk-modal-support{font-size:13px;color:var(--stone);margin:12px 0 0;}
+.yk-modal-support a{color:var(--sage);font-weight:500;text-decoration:none;}
+.yk-modal-go{width:100%;font-size:16px;padding:15px;margin-top:22px;}
+.yk-modal-later{display:block;width:100%;background:none;border:none;color:var(--stone);font-size:13.5px;font-weight:500;cursor:pointer;margin-top:12px;font-family:'DM Sans',sans-serif;}
+</style>
+<div class="yk-modal-overlay" id="pilotModal" onclick="if(event.target===this)closePilotModal()">
+  <div class="yk-modal" role="dialog" aria-modal="true" aria-labelledby="pilotTitle">
+    <button class="yk-modal-x" onclick="closePilotModal()" aria-label="Close">✕</button>
+    <div class="yk-modal-eyebrow">The pilot is open</div>
+    <h2 class="yk-modal-title" id="pilotTitle">Welcome — you&rsquo;re one of the first 🌿</h2>
+    <p class="yk-modal-lead">You&rsquo;re about to join the YourKitchen pilot. Here&rsquo;s what to expect before you create your account.</p>
+
+    <div class="yk-modal-block">
+      <h3>What you can do</h3>
+      <p>Create your Kitchen, add your favorite restaurants and meals, and open the days you&rsquo;d like a hand. Your village sends real, home-delivered meals — and you confirm each one with a quick text before anything is ever charged. Full access, free for the whole pilot.</p>
+    </div>
+
+    <div class="yk-modal-block">
+      <h3>A little grace, please</h3>
+      <p>These are early days. Most of it runs smoothly, but you may bump into a rough edge here and there. If something feels off, telling us is genuinely the most helpful thing you can do — it shapes what we fix first.</p>
+    </div>
+
+    <div class="yk-modal-block">
+      <h3>Tell us how it&rsquo;s going</h3>
+      <p>Share anything — what worked, what didn&rsquo;t, what you wish it did.</p>
+      <a class="btn btn-ghost yk-modal-form" href="https://docs.google.com/forms/d/e/1FAIpQLSeGZVYOpQmnkdXxlh_iKpb1tnT2lS-fZamwnHEs9nBEXdXf8Q/viewform?usp=header" target="_blank" rel="noopener noreferrer">Open the feedback form →</a>
+      <p class="yk-modal-support">Or email us anytime at <a href="mailto:support@yourkitchen.app">support@yourkitchen.app</a>.</p>
+    </div>
+
+    <button class="btn btn-primary yk-modal-go" onclick="continueToSignup()">Create my account →</button>
+    <button class="yk-modal-later" onclick="closePilotModal()">Maybe later</button>
+  </div>
+</div>
+<script>
+function openPilotModal(e){ if(e&&e.preventDefault)e.preventDefault(); var m=document.getElementById('pilotModal'); if(m){m.classList.add('open');document.body.style.overflow='hidden';} return false; }
+function closePilotModal(){ var m=document.getElementById('pilotModal'); if(m){m.classList.remove('open');document.body.style.overflow='';} }
+function continueToSignup(){ window.location.href='https://app.yourkitchen.app/signup'; }
+document.addEventListener('keydown', function(e){ if(e.key==='Escape')closePilotModal(); });
 </script>
 </body>
 </html>
