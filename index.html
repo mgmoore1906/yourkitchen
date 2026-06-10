@@ -301,7 +301,11 @@
 .yk-modal-form{display:inline-block;font-size:14px;padding:9px 16px;margin-top:2px;}
 .yk-modal-support{font-size:13px;color:var(--stone);margin:12px 0 0;}
 .yk-modal-support a{color:var(--sage);font-weight:500;text-decoration:none;}
-.yk-modal-go{width:100%;font-size:16px;padding:15px;margin-top:22px;}
+.yk-modal-go{width:100%;font-size:16px;padding:15px;margin-top:12px;}
+.yk-modal-go:disabled{opacity:.45;cursor:not-allowed;}
+.yk-modal-agree{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--forest);line-height:1.5;margin-top:20px;cursor:pointer;}
+.yk-modal-agree input{margin-top:2px;width:17px;height:17px;flex-shrink:0;accent-color:var(--sage);cursor:pointer;}
+.yk-modal-agree a{color:var(--sage);font-weight:600;text-decoration:none;}
 .yk-modal-later{display:block;width:100%;background:none;border:none;color:var(--stone);font-size:13.5px;font-weight:500;cursor:pointer;margin-top:12px;font-family:'DM Sans',sans-serif;}
 </style>
 <div class="yk-modal-overlay" id="pilotModal" onclick="if(event.target===this)closePilotModal()">
@@ -324,18 +328,20 @@
     <div class="yk-modal-block">
       <h3>Tell us how it&rsquo;s going</h3>
       <p>Share anything — what worked, what didn&rsquo;t, what you wish it did.</p>
-      <a class="btn btn-ghost yk-modal-form" href="https://forms.gle/jGskpVjQrM8JS6UP7" target="_blank" rel="noopener noreferrer">Open the feedback form →</a>
+      <a class="btn btn-ghost yk-modal-form" href="https://docs.google.com/forms/d/e/1FAIpQLSfNdC51-AFcUXBlwoZVcZgz4GPsSo-DghXT5A5u8RC93h9Ycg/viewform?usp=header" target="_blank" rel="noopener noreferrer">Open the feedback form →</a>
       <p class="yk-modal-support">Or email us anytime at <a href="mailto:support@yourkitchen.app">support@yourkitchen.app</a>.</p>
     </div>
 
-    <button class="btn btn-primary yk-modal-go" onclick="continueToSignup()">Create my account →</button>
+    <label class="yk-modal-agree"><input type="checkbox" id="agreeTerms" onchange="toggleAgree()"> I&rsquo;m 18 or older and I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service &amp; Privacy Policy</a>.</label>
+    <button class="btn btn-primary yk-modal-go" id="pilotGo" disabled onclick="continueToSignup()">Create my account →</button>
     <button class="yk-modal-later" onclick="closePilotModal()">Maybe later</button>
   </div>
 </div>
 <script>
 function openPilotModal(e){ if(e&&e.preventDefault)e.preventDefault(); var m=document.getElementById('pilotModal'); if(m){m.classList.add('open');document.body.style.overflow='hidden';} return false; }
 function closePilotModal(){ var m=document.getElementById('pilotModal'); if(m){m.classList.remove('open');document.body.style.overflow='';} }
-function continueToSignup(){ window.location.href='https://app.yourkitchen.app/signup'; }
+function continueToSignup(){ var c=document.getElementById('agreeTerms'); if(c&&!c.checked) return; window.location.href='https://app.yourkitchen.app/signup'; }
+function toggleAgree(){ var b=document.getElementById('pilotGo'); var c=document.getElementById('agreeTerms'); if(b&&c) b.disabled=!c.checked; }
 document.addEventListener('keydown', function(e){ if(e.key==='Escape')closePilotModal(); });
 </script>
 </body>
