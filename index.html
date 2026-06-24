@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="YourKitchen coordinates meals from the people who love you — so dinner is one less thing to carry when life gets heavy.">
 <meta property="og:title" content="YourKitchen — Your kitchen, covered.">
-<meta property="og:description" content="Your village is ready. Let them show up. Join the waitlist for YourKitchen — launching August 2026.">
+<meta property="og:description" content="Your village is ready. Let them show up. A simpler way for your people to send real meals when life gets heavy.">
 <meta property="og:url" content="https://yourkitchen.app">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -15,279 +18,347 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=4">
+<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --sage:#3D6B4F;--sage-mid:#6B9E7E;--sage-light:#EAF2ED;
-    --cream:#FAFAF5;--forest:#1E2620;--stone:#6B7066;
-    --border:#DDE8E0;--white:#FFFFFF;
-  }
-  html { scroll-behavior: smooth; }
-  body { font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--forest);-webkit-font-smoothing:antialiased; }
-  nav { background:var(--cream);border-bottom:0.5px solid var(--border);padding:14px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100; }
-  .nav-logo { display:flex;flex-direction:column;line-height:1;cursor:default; }
-  .nav-your { font-family:'DM Sans',sans-serif;font-size:9px;font-weight:500;letter-spacing:5px;color:var(--sage-mid);text-transform:uppercase; }
-  .nav-kitchen { font-family:'Lora',serif;font-size:22px;font-weight:500;color:var(--forest);letter-spacing:-0.5px; }
-  .nav-cta { background:var(--sage);color:var(--white);border:none;border-radius:8px;padding:10px 20px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:background 0.15s;text-decoration:none;display:inline-block; }
-  .nav-cta:hover { background:#2D5240; }
-  .hero { background:var(--forest);padding:72px 40px 64px;text-align:center; }
-  .eyebrow { font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--sage-mid);margin-bottom:22px; }
-  .hero h1 { font-family:'Lora',serif;font-size:clamp(36px,6vw,54px);font-weight:500;color:var(--white);line-height:1.1;letter-spacing:-1.5px;margin-bottom:20px;max-width:580px;margin-left:auto;margin-right:auto; }
-  .hero h1 em { color:var(--sage-mid);font-style:italic; }
-  .hero-sub { font-size:16px;color:#9AB8A5;line-height:1.75;max-width:460px;margin:0 auto 36px; }
-  .brevo-wrapper { max-width:480px;margin:0 auto;background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.12);border-radius:14px;overflow:hidden;padding:8px; }
-  .brevo-wrapper iframe { display:block;width:100%;max-width:100%;border:none;border-radius:8px;margin:0 auto; }
-  .brevo-note { font-size:11px;color:rgba(255,255,255,0.28);margin-top:10px;text-align:center; }
-  .hero-count { display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:0.5px solid rgba(255,255,255,0.1);border-radius:20px;padding:8px 18px;font-size:12px;color:#9AB8A5;margin-top:24px; }
-  .pulse { width:7px;height:7px;border-radius:50%;background:var(--sage-mid);animation:pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.4} }
-  .container { max-width:660px;margin:0 auto;padding:0 32px; }
-  .section { padding:72px 0; }
-  .section+.section { border-top:0.5px solid var(--border); }
-  .section-eyebrow { font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:12px; }
-  .section-h2 { font-family:'Lora',serif;font-size:clamp(26px,4vw,34px);font-weight:500;color:var(--forest);letter-spacing:-0.5px;line-height:1.2;margin-bottom:20px; }
-  .section-h2 em { font-style:italic;color:var(--sage); }
-  .section-body { font-size:15px;color:var(--stone);line-height:1.85; }
-  .story-card { background:var(--white);border:0.5px solid var(--border);border-radius:16px;padding:32px 32px 32px 36px;margin-top:32px;position:relative; }
-  .story-card::before { content:'';position:absolute;left:0;top:28px;bottom:28px;width:3px;background:var(--sage);border-radius:0 2px 2px 0; }
-  .story-quote { font-family:'Lora',serif;font-size:17px;font-style:italic;color:var(--forest);line-height:1.8;margin-bottom:22px; }
-  .story-attr { display:flex;align-items:center;gap:12px; }
-  .story-avatar { width:42px;height:42px;border-radius:50%;background:var(--sage);display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-size:17px;color:var(--white);font-weight:500;flex-shrink:0; }
-  .story-name { font-size:13px;font-weight:500;color:var(--forest); }
-  .story-title { font-size:12px;color:var(--stone);margin-top:1px; }
-  .steps { display:flex;flex-direction:column;margin-top:36px; }
-  .step { display:flex;gap:20px;padding:26px 0;border-bottom:0.5px solid var(--border); }
-  .step:last-child { border-bottom:none; }
-  .step-num { width:38px;height:38px;border-radius:50%;background:var(--sage-light);display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-size:17px;font-weight:500;color:var(--sage);flex-shrink:0;margin-top:2px; }
-  .step h3 { font-family:'Lora',serif;font-size:18px;font-weight:500;color:var(--forest);margin-bottom:6px; }
-  .step p { font-size:14px;color:var(--stone);line-height:1.65; }
-  .step-tag { display:inline-block;font-size:10px;font-weight:500;padding:4px 12px;background:var(--sage-light);color:var(--sage);border-radius:20px;margin-top:10px; }
-  .use-cases { display:flex;flex-direction:column;gap:10px;margin-top:32px; }
-  .use-card { background:var(--white);border:0.5px solid var(--border);border-radius:12px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;transition:border-color 0.15s; }
-  .use-card:hover { border-color:var(--sage-mid); }
-  .use-icon { width:40px;height:40px;border-radius:10px;background:var(--sage-light);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0; }
-  .use-card h4 { font-size:14px;font-weight:500;color:var(--forest);margin-bottom:4px; }
-  .use-card p { font-size:13px;color:var(--stone);line-height:1.55; }
-  .refer-section { background:var(--sage-light);border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);padding:72px 40px;text-align:center; }
-  .refer-section h2 { font-family:'Lora',serif;font-size:clamp(24px,4vw,32px);font-weight:500;color:var(--forest);letter-spacing:-0.5px;margin-bottom:12px; }
-  .refer-section p { font-size:15px;color:var(--stone);max-width:440px;margin:0 auto 32px;line-height:1.7; }
-  .refer-card { background:var(--white);border:0.5px solid var(--border);border-radius:14px;padding:28px;max-width:440px;margin:0 auto; }
-  .refer-label { font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--stone);margin-bottom:10px;text-align:left; }
-  .refer-link-box { background:var(--cream);border:0.5px solid var(--border);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--sage);font-family:monospace;margin-bottom:12px;text-align:left; }
-  .refer-btn { width:100%;padding:13px;background:var(--forest);color:var(--white);border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:background 0.15s; }
-  .refer-btn:hover { background:#2D5240; }
-  .refer-stats { display:flex;justify-content:center;gap:32px;margin-top:22px;padding-top:20px;border-top:0.5px solid var(--border); }
-  .stat-num { font-family:'Lora',serif;font-size:24px;font-weight:500;color:var(--sage);display:block; }
-  .stat-lbl { font-size:11px;color:var(--stone);margin-top:2px;display:block; }
-  footer { background:var(--forest);padding:52px 40px;text-align:center; }
-  .footer-your { font-family:'DM Sans',sans-serif;font-size:9px;font-weight:500;letter-spacing:5px;color:var(--sage-mid);text-transform:uppercase;margin-bottom:2px; }
-  .footer-kitchen { font-family:'Lora',serif;font-size:28px;font-weight:500;color:var(--white);letter-spacing:-0.5px; }
-  .footer-tagline { font-family:'Lora',serif;font-size:14px;font-style:italic;color:var(--sage-mid);margin:10px 0 24px; }
-  .footer-links { display:flex;justify-content:center;flex-wrap:wrap;gap:6px 16px;font-size:12px;margin-bottom:20px; }
-  .footer-links a { color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.15s; }
-  .footer-links a:hover { color:var(--sage-mid); }
-  .footer-copy { font-size:11px;color:rgba(255,255,255,0.18); }
-  .video-wrap { position:relative;width:100%;padding-bottom:56.25%;margin:32px 0 40px;border-radius:14px;overflow:hidden;background:var(--forest);box-shadow:0 4px 24px rgba(0,0,0,0.10); }
-  .video-wrap iframe { position:absolute;top:0;left:0;width:100%;height:100%;border:none; }
-  @media(max-width:600px) {
-    nav { padding:14px 20px; }
-    .hero { padding:60px 24px 52px; }
-    .container { padding:0 20px; }
-    .section { padding:52px 0; }
-    .refer-section { padding:52px 20px; }
-    footer { padding:48px 20px; }
-    .story-card { padding:24px 20px 24px 26px; }
-  }
+.yk-form-card { max-width:440px; margin:0 auto; background:var(--white,#fff); border:0.5px solid var(--border); border-radius:18px; padding:28px 26px; box-shadow:0 12px 40px rgba(30,38,32,0.08); text-align:left; }
+.yk-form-title { font-family:'Lora',serif; font-size:22px; font-weight:500; color:var(--forest); margin:0 0 18px; letter-spacing:-0.3px; }
+.yk-field { margin-bottom:16px; }
+.yk-field label { display:block; font-size:13px; font-weight:600; color:var(--forest); margin-bottom:6px; }
+.yk-field input { width:100%; box-sizing:border-box; padding:12px 14px; border:1px solid var(--border); border-radius:10px; font-family:'DM Sans',sans-serif; font-size:15px; color:var(--forest); background:var(--cream); transition:border-color .15s, background .15s; }
+.yk-field input:focus { outline:none; border-color:var(--sage-mid); background:var(--white,#fff); }
+.yk-field input::placeholder { color:#A9B4AC; }
+.yk-hint { display:block; font-size:12px; color:var(--stone); margin-top:6px; font-weight:300; }
+.yk-submit { width:100%; margin-top:6px; cursor:pointer; border:none; font-size:15px; font-weight:600; padding:13px; border-radius:10px; }
+.yk-msg { display:none; font-size:14px; border-radius:10px; padding:12px 14px; margin-bottom:16px; }
+.yk-msg--error { color:#7a1d1d; background:#ffeded; border:1px solid #f3b4b4; }
+.yk-msg--success { color:#0a5a2e; background:#e7faf0; border:1px solid #9ad9b6; }
+.video-wrap { position:relative;width:100%;padding-bottom:56.25%;margin:32px 0 40px;border-radius:14px;overflow:hidden;background:#1E2620;box-shadow:0 4px 24px rgba(0,0,0,0.10); }
+.video-wrap iframe { position:absolute;top:0;left:0;width:100%;height:100%;border:none; }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-logo">
-    <span class="nav-your">Your</span>
-    <span class="nav-kitchen">Kitchen</span>
-  </div>
-  <a class="nav-cta" href="#waitlist">Join the waitlist</a>
+<!-- ===== NAV (shared markup) ===== -->
+<header class="site-nav">
+<a class="nav-logo" href="index.html">
+<span class="nav-your">Your</span>
+<span class="nav-kitchen">Kitchen</span>
+</a>
+<nav class="nav-links" id="navMenu">
+<a href="how-it-works.html">How It Works</a>
+<a href="pricing.html">Pricing</a>
+<a href="organizations.html">For Organizations</a>
+<a href="about.html">Our Story</a>
+<a class="nav-login" href="https://app.yourkitchen.app/login">Log in</a>
+<a class="nav-cta" href="https://app.yourkitchen.app/signup" onclick="return openPilotModal(event)">Get Started</a>
 </nav>
+<button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+<span></span><span></span><span></span>
+</button>
+</header>
 
+<!-- ===== HERO ===== -->
 <section class="hero" id="waitlist">
-  <div class="eyebrow">Coming August 2026</div>
-  <h1>Your village is ready.<br><em>Let them show up.</em></h1>
-  <p class="hero-sub">YourKitchen coordinates meals from the people who love you — so dinner is one less thing to carry when life gets heavy.</p>
+<div class="eyebrow reveal">The pilot is open · free to join</div>
+<h1 class="reveal d1">Your village is ready.<br><em>Let them show up.</em></h1>
+<p class="hero-sub reveal d2">YourKitchen coordinates meals from the people who love you — so dinner is one less thing to carry when life gets heavy.</p>
 
-  <div class="brevo-wrapper">
-    <iframe
-      width="100%"
-      height="420"
-      src="https://594524f6.sibforms.com/serve/MUIFACSPo6AVM8qMjOdfV49N_JMjI3X5-SYkxOp1TSEP2PZQ4dAlnvzL5azY0NFYfJE2-dSe6C4S38qON4rn8zyxGgCnUi2UJ8R-s2lj3AN7uGb_8CjbgMNXTHpiVspXL9V5Grsove-eX8YQRe-UxZ9C3gJt4y1tXoTmkqYBkxA0LEovvaYVl2tKXATbH8zkaPd5chivorcbbkMHWQ=="
-      frameborder="0"
-      scrolling="auto"
-      allowfullscreen>
-    </iframe>
-  </div>
-  <p class="brevo-note">No spam. Ever. Just a heads-up when we launch.</p>
-
-  <div class="hero-count">
-    <div class="pulse"></div>
-    <span>Be one of the first families to join</span>
-  </div>
-</section>
-
-<div style="background:var(--cream)">
-  <div class="container">
-
-    <div class="section">
-      <p class="section-eyebrow">Why we built this</p>
-      <h2 class="section-h2">I'm leaving for graduate school.<br><em>My wife needed her village.</em></h2>
-      <div class="story-card">
-        <p class="story-quote">"In July 2026, I leave for graduate school across the country. My wife Danielle will be home in Waller, Texas — with two young kids and a new baby due in June 2026. The people who love her want to help. But nobody had a way to actually show up in a coordinated, meaningful way. So I built one."</p>
-        <div class="story-attr">
-          <div class="story-avatar">M</div>
-          <div>
-            <div class="story-name">Marques Moore</div>
-            <div class="story-title">Founder · YourKitchen</div>
-          </div>
-        </div>
-      </div>
-      <p class="section-body" style="margin-top:28px">YourKitchen started as a gift for Danielle, a way for her village — family, friends, colleagues — to claim dates on a calendar and send dinner without her having to ask. No coordination overhead. No group texts. No three lasagnas on the same Tuesday. Just dinner, handled, by the people who love her.</p>
-      <p class="section-body" style="margin-top:16px">Then we realized: every family going through something hard needs exactly this.</p>
-    </div>
-
-    <div class="section">
-      <p class="section-eyebrow">How it works</p>
-      <h2 class="section-h2">Three steps.<br><em>One less thing to worry about.</em></h2>
-
-      <div class="video-wrap">
-        <iframe
-          src="https://www.youtube.com/embed/SskTojLbTzc"
-          title="How YourKitchen works"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
-      </div>
-
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <div>
-            <h3>Someone creates a Kitchen</h3>
-            <p>A friend, family member, or the recipient sets up a YourKitchen calendar — choosing how many months of support they need, their meal preferences, allergies, and preferred delivery window.</p>
-            <span class="step-tag">5 minutes to set up</span>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div>
-            <h3>The village claims dates</h3>
-            <p>Friends and family get a link to the calendar. They pick a date, choose a meal from a curated local restaurant list, leave a personal note — and save their card. No awkward payment requests. No forgotten commitments.</p>
-            <span class="step-tag">One tap to claim a date</span>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div>
-            <h3>The recipient confirms and eats</h3>
-            <p>On the day, the recipient gets a text: "Marcus picked dinner for tonight — does this work?" They reply Y to confirm or swap to something else. The order is placed automatically. Dinner arrives.</p>
-            <span class="step-tag">Y to confirm · N to swap</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <p class="section-eyebrow">Who it's for</p>
-      <h2 class="section-h2">Life gets hard.<br><em>Your kitchen shouldn't.</em></h2>
-      <div class="use-cases">
-        <div class="use-card">
-          <div class="use-icon">🤱</div>
-          <div>
-            <h4>New parents</h4>
-            <p>The meal train, finally organized. No more group texts, missed commitments, or duplicate dinners on the same night.</p>
-          </div>
-        </div>
-        <div class="use-card">
-          <div class="use-icon">🎗️</div>
-          <div>
-            <h4>Families in treatment</h4>
-            <p>When someone is navigating chemo, radiation, or surgery — their community wants to show up. YourKitchen gives them a real way to do it.</p>
-          </div>
-        </div>
-        <div class="use-card">
-          <div class="use-icon">✈️</div>
-          <div>
-            <h4>Deployed & long-distance families</h4>
-            <p>A spouse holding down the home solo deserves a village that shows up — even when family is hours away.</p>
-          </div>
-        </div>
-        <div class="use-card">
-          <div class="use-icon">🕊️</div>
-          <div>
-            <h4>Grief & loss</h4>
-            <p>After losing someone, nobody wants to think about dinner. The people who love them do. YourKitchen connects both.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
+<div class="reveal d2" style="margin:6px 0 24px;">
+<button class="btn btn-primary" style="font-size:16px;padding:15px 30px;" onclick="openPilotModal(event)">Join the pilot — it&rsquo;s open</button>
+<p style="font-size:13px;color:var(--stone);margin:14px 0 0;">Pilot families get full access, free. Prefer to wait? Leave your email below for launch.</p>
 </div>
 
-<section class="refer-section">
-  <h2>Know someone who needs this?</h2>
-  <p>Share YourKitchen with someone whose village is ready to show up. Every share gets us closer to the families who need this most.</p>
-  <div class="refer-card">
-    <p class="refer-label">Share the link</p>
-    <div class="refer-link-box">yourkitchen.app</div>
-    <button class="refer-btn" onclick="shareLink()">Copy link to share</button>
-    <div class="refer-stats">
-      <div><span class="stat-num">Aug</span><span class="stat-lbl">Launch month</span></div>
-      <div><span class="stat-num">Free</span><span class="stat-lbl">Always to join</span></div>
-      <div><span class="stat-num">🧡</span><span class="stat-lbl">Built for families</span></div>
-    </div>
-  </div>
+<div class="brevo-wrapper reveal d3">
+<div class="yk-form-card">
+<div id="error-message" class="sib-form-message-panel yk-msg yk-msg--error">
+<span class="sib-form-message-panel__inner-text">Your subscription could not be saved. Please try again.</span>
+</div>
+<div id="success-message" class="sib-form-message-panel yk-msg yk-msg--success">
+<span class="sib-form-message-panel__inner-text">You're on the list — we'll be in touch. 🧡</span>
+</div>
+<div id="sib-container">
+<form id="sib-form" method="POST" action="https://594524f6.sibforms.com/serve/MUIFACSPo6AVM8qMjOdfV49N_JMjI3X5-SYkxOp1TSEP2PZQ4dAlnvzL5azY0NFYfJE2-dSe6C4S38qON4rn8zyxGgCnUi2UJ8R-s2lj3AN7uGb_8CjbgMNXTHpiVspXL9V5Grsove-eX8YQRe-UxZ9C3gJt4y1tXoTmkqYBkxA0LEovvaYVl2tKXATbH8zkaPd5chivorcbbkMHWQ==" data-type="subscription">
+<h3 class="yk-form-title">Join the waiting list</h3>
+<div class="yk-field">
+<label for="FIRSTNAME">First name</label>
+<input type="text" id="FIRSTNAME" name="FIRSTNAME" maxlength="200" autocomplete="given-name" placeholder="Your first name" data-required="true" required />
+</div>
+<div class="yk-field">
+<label for="EMAIL">Email address</label>
+<input type="email" id="EMAIL" name="EMAIL" autocomplete="email" placeholder="you@example.com" data-required="true" required />
+<span class="yk-hint">No cost, no burdening emails — just a heads up when we launch.</span>
+</div>
+<button class="btn btn-primary yk-submit" form="sib-form" type="submit">Join the list</button>
+<input type="text" name="email_address_check" value="" class="input--hidden" style="display:none!important;" />
+<input type="hidden" name="locale" value="en" />
+</form>
+</div>
+</div>
+</div>
+<p class="brevo-note">No spam. Ever. Just a heads-up when we launch.</p>
+
+<div class="hero-count reveal d4">
+<div class="pulse"></div>
+<span>Be one of the first families to join</span>
+</div>
 </section>
 
-<footer>
-  <div class="footer-your">Your</div>
-  <div class="footer-kitchen">Kitchen</div>
-  <p class="footer-tagline">"Your kitchen, covered."</p>
-  <div class="footer-links">
-    <a href="https://yourkitchen.app">yourkitchen.app</a>
-    <span style="color:rgba(255,255,255,0.2)">·</span>
-    <a href="mailto:marques@yourkitchen.app">marques@yourkitchen.app</a>
-    <span style="color:rgba(255,255,255,0.2)">·</span>
-    <span style="color:rgba(255,255,255,0.2)">Waller, TX</span>
-  </div>
-  <p class="footer-copy">© 2026 YourKitchen LLC · Built with love for Danielle · All rights reserved</p>
+<div class="container">
+
+<!-- ===== STORY ===== -->
+<div class="section">
+<p class="section-eyebrow">Why we built this</p>
+<h2 class="section-h2">When life got heavy,<br><em>her village wanted to help.</em></h2>
+<p class="section-body">YourKitchen started in our own home in Hockley, Texas — three kids under five, and a community that kept asking the same question: <em>"What can I do?"</em> The honest answer was almost always dinner. But meal trains fall apart in group texts, double up on the same night, and quietly fade. We wanted something that just worked.</p>
+<div class="story-card">
+<p class="story-quote">"I didn't have to ask. I didn't have to organize anything. People I loved just… showed up, one dinner at a time. That was everything."</p>
+<div class="story-attr">
+<div class="story-avatar">D</div>
+<div>
+<div class="story-name">Danielle</div>
+<div class="story-title">The reason YourKitchen exists</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ===== HOW IT WORKS (condensed) ===== -->
+<div class="section section--border">
+<p class="section-eyebrow">How it works</p>
+<h2 class="section-h2">Three steps.<br><em>One less thing to worry about.</em></h2>
+
+<div class="video-wrap">
+<iframe
+  src="https://www.youtube.com/embed/SskTojLbTzc"
+  title="How YourKitchen works"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen>
+</iframe>
+</div>
+
+<div class="steps">
+<div class="step">
+<div class="step-num">1</div>
+<div>
+<h3>Someone creates a Kitchen</h3>
+<p>A friend, family member, or the recipient sets up a calendar — choosing how long they need support, meal preferences, allergies, and a delivery window.</p>
+<span class="step-tag">5 minutes to set up</span>
+</div>
+</div>
+<div class="step">
+<div class="step-num">2</div>
+<div>
+<h3>The village claims dates</h3>
+<p>Friends and family get a link. They pick a date, choose a meal from a curated local restaurant list, leave a note, and save their card. No awkward payment asks.</p>
+<span class="step-tag">One tap to claim a date</span>
+</div>
+</div>
+<div class="step">
+<div class="step-num">3</div>
+<div>
+<h3>The recipient confirms and eats</h3>
+<p>On the day, the recipient gets a text: "Marques picked dinner for tonight — does this work?" They reply Y to confirm or swap. Dinner arrives.</p>
+<span class="step-tag">Y to confirm · N to swap</span>
+</div>
+</div>
+</div>
+<p style="margin-top:28px;"><a class="btn btn-ghost" href="how-it-works.html">See it in action →</a></p>
+</div>
+
+<!-- ===== WHO IT'S FOR ===== -->
+<div class="section section--border">
+<p class="section-eyebrow">Who it's for</p>
+<h2 class="section-h2">Life gets hard.<br><em>Your kitchen shouldn't.</em></h2>
+<div class="use-cases">
+<div class="use-card">
+<div class="use-icon">🤱</div>
+<div><h4>New parents</h4><p>The meal train, finally organized. No more group texts, missed commitments, or duplicate dinners.</p></div>
+</div>
+<div class="use-card">
+<div class="use-icon">🎗️</div>
+<div><h4>Families in treatment</h4><p>When someone is navigating chemo, radiation, or surgery, their community wants to show up. YourKitchen gives them a real way to do it.</p></div>
+</div>
+<div class="use-card">
+<div class="use-icon">✈️</div>
+<div><h4>Deployed &amp; long-distance families</h4><p>A spouse holding down the home solo deserves a village that shows up — even when family is hours away.</p></div>
+</div>
+<div class="use-card">
+<div class="use-icon">🕊️</div>
+<div><h4>Grief &amp; loss</h4><p>After losing someone, nobody wants to think about dinner. The people who love them do.</p></div>
+</div>
+<div class="use-card">
+<div class="use-icon">🎓</div>
+<div><h4>Parents of new college students</h4><p>They're three states away in a dorm with no kitchen. A warm dinner on a hard week is how you hug them from home.</p></div>
+</div>
+<div class="use-card">
+<div class="use-icon">🫶</div>
+<div><h4>The sandwich generation</h4><p>Caring for your kids and your aging parents at once is relentless. Let your village make sure everyone — including you — gets fed.</p></div>
+</div>
+</div>
+<p style="text-align:center;margin-top:28px;font-size:14px;color:var(--stone);">Are you an organization that cares for people at scale? <a href="organizations.html" style="color:var(--sage);font-weight:500;">YourKitchen for organizations →</a></p>
+</div>
+
+</div>
+
+<!-- ===== REFER / SHARE ===== -->
+<section class="refer-section">
+<h2>Know someone who needs this?</h2>
+<p>Share YourKitchen with someone whose village is ready to show up. Every share gets us closer to the families who need this most.</p>
+<div class="refer-card">
+<p class="refer-label">Share the link</p>
+<div class="refer-link-box">yourkitchen.app</div>
+<button class="btn btn-dark refer-btn" onclick="shareLink()">Copy link to share</button>
+<div class="refer-stats">
+<div><span class="stat-num">Jul</span><span class="stat-lbl">Launch month</span></div>
+<div><span class="stat-num">Free</span><span class="stat-lbl">Always to join</span></div>
+<div><span class="stat-num">🧡</span><span class="stat-lbl">Built for families</span></div>
+</div>
+</div>
+</section>
+
+<!-- ===== FOOTER (shared markup) ===== -->
+<footer class="site-footer">
+<div class="footer-your">Your</div>
+<div class="footer-kitchen">Kitchen</div>
+<p class="footer-tagline">"Your kitchen, covered."</p>
+<div class="footer-links">
+<a href="how-it-works.html">How It Works</a><span class="footer-sep">·</span>
+<a href="pricing.html">Pricing</a><span class="footer-sep">·</span>
+<a href="organizations.html">For Organizations</a><span class="footer-sep">·</span>
+<a href="about.html">Our Story</a><span class="footer-sep">·</span>
+<a href="privacy.html">Privacy</a><span class="footer-sep">·</span>
+<a href="terms.html">Terms</a><span class="footer-sep">·</span>
+<a href="sms-opt-in.html">SMS</a><span class="footer-sep">·</span>
+<a href="mailto:marques@yourkitchen.app">Contact</a>
+</div>
+<p class="footer-copy">© <span id="year">2026</span> YourKitchen LLC · Hockley, TX · Built with love for Danielle</p>
 </footer>
 
 <script>
-  function shareLink() {
-    var url = 'https://yourkitchen.app';
-    var btn = document.querySelector('.refer-btn');
-    if (navigator.share) {
-      navigator.share({ title: 'YourKitchen', text: 'Your kitchen, covered.', url: url });
-    } else if (navigator.clipboard) {
-      navigator.clipboard.writeText(url).then(function() { showCopied(btn); });
-    } else {
-      var ta = document.createElement('textarea');
-      ta.value = url; ta.style.position='fixed'; ta.style.opacity='0';
-      document.body.appendChild(ta); ta.select();
-      document.execCommand('copy'); document.body.removeChild(ta);
-      showCopied(btn);
-    }
-  }
-  function showCopied(btn) {
-    var orig = btn.textContent;
-    btn.textContent = '✓ Link copied!';
-    btn.style.background = '#3D6B4F';
-    setTimeout(function() { btn.textContent = orig; btn.style.background = ''; }, 2500);
-  }
-  document.querySelector('.nav-cta').addEventListener('click', function(e) {
-    e.preventDefault();
-    document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });
-  });
+window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+window.LOCALE = 'en';
+window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank. ";
+window.GENERIC_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+window.translation = { common: { selectedList: '{quantity} list selected', selectedLists: '{quantity} lists selected', selectedOption: '{quantity} selected', selectedOptions: '{quantity} selected' } };
+var AUTOHIDE = Boolean(0);
+</script>
+<!-- Brevo main.js removed: replaced with direct-POST handler (see yk-brevo-submit below) -->
+<script src="script.js?v=4"></script>
+<script>
+(function () {
+var form = document.getElementById('sib-form');
+if (!form) return;
+var successEl = document.getElementById('success-message');
+var errorEl = document.getElementById('error-message');
+
+function show(el) { if (el) { el.style.display = 'block'; } }
+function hide(el) { if (el) { el.style.display = 'none'; } }
+
+// Panels start hidden
+hide(successEl); hide(errorEl);
+
+form.addEventListener('submit', function (e) {
+e.preventDefault();
+hide(successEl); hide(errorEl);
+
+var emailInput = form.querySelector('#EMAIL');
+var honeypot = form.querySelector('input[name="email_address_check"]');
+var email = emailInput ? emailInput.value.trim() : '';
+
+// Honeypot: if filled, it's a bot — silently pretend success, don't submit.
+if (honeypot && honeypot.value) { show(successEl); return; }
+
+// Basic email validation
+if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+if (errorEl) {
+var t = errorEl.querySelector('.sib-form-message-panel__inner-text');
+if (t) t.textContent = 'Please enter a valid email address.';
+}
+show(errorEl);
+return;
+}
+
+var btn = form.querySelector('button[type="submit"]');
+if (btn) { btn.disabled = true; btn.textContent = 'Joining…'; }
+
+var data = new FormData(form);
+// Submit directly to Brevo. no-cors: the request goes through, but the response is opaque
+// (Brevo doesn't send CORS headers), so we treat a completed request as success.
+fetch(form.action, { method: 'POST', body: data, mode: 'no-cors' })
+.then(function () {
+show(successEl);
+form.reset();
+})
+.catch(function () {
+show(errorEl);
+})
+.finally(function () {
+if (btn) { btn.disabled = false; btn.textContent = 'Join the list'; }
+});
+});
+})();
+</script>
+
+<!-- ===== PILOT WELCOME MODAL ===== -->
+<style>
+.yk-modal-overlay{position:fixed;inset:0;background:rgba(30,38,32,.55);display:none;align-items:center;justify-content:center;z-index:2000;padding:18px;}
+.yk-modal-overlay.open{display:flex;}
+.yk-modal{position:relative;background:var(--cream);border:1px solid var(--border);border-radius:20px;max-width:480px;width:100%;max-height:90vh;overflow-y:auto;padding:30px 26px 26px;box-shadow:0 24px 70px rgba(30,38,32,.35);font-family:'DM Sans',sans-serif;}
+.yk-modal-x{position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;color:var(--stone);cursor:pointer;line-height:1;padding:6px;}
+.yk-modal-eyebrow{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--sage-mid);margin-bottom:8px;}
+.yk-modal-title{font-family:'Lora',serif;font-size:24px;font-weight:600;color:var(--forest);margin:0 0 10px;line-height:1.2;}
+.yk-modal-lead{font-size:14.5px;color:var(--stone);line-height:1.6;margin:0 0 4px;}
+.yk-modal-block{border-top:1px solid var(--border);padding-top:14px;margin-top:16px;}
+.yk-modal-block h3{font-family:'Lora',serif;font-size:15px;font-weight:600;color:var(--sage);margin:0 0 6px;}
+.yk-modal-block p{font-size:14px;color:var(--forest);line-height:1.6;margin:0 0 10px;opacity:.92;}
+.yk-modal-form{display:inline-block;font-size:14px;padding:9px 16px;margin-top:2px;}
+.yk-modal-support{font-size:13px;color:var(--stone);margin:12px 0 0;}
+.yk-modal-support a{color:var(--sage);font-weight:500;text-decoration:none;}
+.yk-modal-go{width:100%;font-size:16px;padding:15px;margin-top:12px;}
+.yk-modal-go:disabled{opacity:.45;cursor:not-allowed;}
+.yk-modal-agree{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--forest);line-height:1.5;margin-top:20px;cursor:pointer;}
+.yk-modal-agree input{margin-top:2px;width:17px;height:17px;flex-shrink:0;accent-color:var(--sage);cursor:pointer;}
+.yk-modal-agree a{color:var(--sage);font-weight:600;text-decoration:none;}
+.yk-modal-later{display:block;width:100%;background:none;border:none;color:var(--stone);font-size:13.5px;font-weight:500;cursor:pointer;margin-top:12px;font-family:'DM Sans',sans-serif;}
+</style>
+<div class="yk-modal-overlay" id="pilotModal" onclick="if(event.target===this)closePilotModal()">
+<div class="yk-modal" role="dialog" aria-modal="true" aria-labelledby="pilotTitle">
+<button class="yk-modal-x" onclick="closePilotModal()" aria-label="Close">✕</button>
+<div class="yk-modal-eyebrow">The pilot is open</div>
+<h2 class="yk-modal-title" id="pilotTitle">Welcome — you&rsquo;re one of the first 🌿</h2>
+<p class="yk-modal-lead">You&rsquo;re about to join the YourKitchen pilot. Here&rsquo;s what to expect before you create your account.</p>
+
+<div class="yk-modal-block">
+<h3>What you can do</h3>
+<p>Create your Kitchen, add your favorite restaurants and meals, and open the days you&rsquo;d like a hand. Your village sends real, home-delivered meals — and you confirm each one with a quick text before anything is ever charged. Full access, free for the whole pilot.</p>
+</div>
+
+<div class="yk-modal-block">
+<h3>A little grace, please</h3>
+<p>These are early days. Most of it runs smoothly, but you may bump into a rough edge here and there. If something feels off, telling us is genuinely the most helpful thing you can do — it shapes what we fix first.</p>
+</div>
+
+<div class="yk-modal-block">
+<h3>Tell us how it&rsquo;s going</h3>
+<p>Share anything — what worked, what didn&rsquo;t, what you wish it did.</p>
+<a class="btn btn-ghost yk-modal-form" href="https://docs.google.com/forms/d/e/1FAIpQLSfNdC51-AFcUXBlwoZVcZgz4GPsSo-DghXT5A5u8RC93h9Ycg/viewform?usp=header" target="_blank" rel="noopener noreferrer">Open the feedback form →</a>
+<p class="yk-modal-support">Or email us anytime at <a href="mailto:support@yourkitchen.app">support@yourkitchen.app</a>.</p>
+</div>
+
+<label class="yk-modal-agree"><input type="checkbox" id="agreeTerms" onchange="toggleAgree()"> I understand YourKitchen is an early pilot, and I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service &amp; Privacy Policy</a>.</label>
+<button class="btn btn-primary yk-modal-go" id="pilotGo" disabled onclick="continueToSignup()">Create my account →</button>
+<button class="yk-modal-later" onclick="closePilotModal()">Maybe later</button>
+</div>
+</div>
+<script>
+function openPilotModal(e){ if(e&&e.preventDefault)e.preventDefault(); var m=document.getElementById('pilotModal'); if(m){m.classList.add('open');document.body.style.overflow='hidden';} return false; }
+function closePilotModal(){ var m=document.getElementById('pilotModal'); if(m){m.classList.remove('open');document.body.style.overflow='';} }
+function continueToSignup(){ var c=document.getElementById('agreeTerms'); if(c&&!c.checked) return; window.location.href='https://app.yourkitchen.app/signup'; }
+function toggleAgree(){ var b=document.getElementById('pilotGo'); var c=document.getElementById('agreeTerms'); if(b&&c) b.disabled=!c.checked; }
+document.addEventListener('keydown', function(e){ if(e.key==='Escape')closePilotModal(); });
 </script>
 </body>
 </html>
